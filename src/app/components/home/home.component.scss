@@ -1,0 +1,74 @@
+.home-front-part {
+    position: relative;
+    height: calc(100vh - 55px);
+}
+
+.square-circle {
+    // height: calc( 100vh - 80px );
+    position: absolute;
+    top: 0;
+    right: 0;
+    float: right;
+    height: 300px;
+    z-index: -1;
+}
+
+.circle1,
+.circle2,
+.circle3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    height: 35px;
+    margin-top: 100px;
+    margin-left: 50%;
+}
+
+// .circle2{
+//     margin-top: 60vh;
+//     margin-left: 82%;
+// }
+.circle3 {
+    margin-top: 75vh;
+    margin-left: 82%;
+}
+
+.half-circle {
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+    height: 100px;
+}
+
+.line-img {
+    position: absolute;
+    bottom: -30px;
+    height: 20px;
+}
+
+.content {
+    padding-top: 150px;
+    padding-left: 30px;
+}
+
+.promo-text {
+    font-size: 18px;
+}
+
+.lap-mobile-div {
+    padding-top: 80px;
+}
+
+
+@media screen and (max-width:700px) {
+    .content {
+        padding: 40px 5px;
+        padding-bottom: 20px;
+    }
+
+    .lap-mobile-div{
+        padding-top: 0px;
+    }
+
+}
