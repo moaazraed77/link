@@ -8,6 +8,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminModule } from './admin/admin.module';
+import { CarasouelDirective } from './Modules/directives/carasouel.directive';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { AdminModule } from './admin/admin.module';
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    AdminComponent
+    AdminComponent,
+    CarasouelDirective
   ],
   imports: [
     BrowserModule,
