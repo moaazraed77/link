@@ -17,21 +17,23 @@
 .circle2,
 .circle3 {
     position: absolute;
-    top: 0;
-    left: 0;
     z-index: -1;
     height: 35px;
-    margin-top: 100px;
-    margin-left: 50%;
+}
+
+.circle1 {
+    top: 100px;
+    left: 50%;
 }
 
 // .circle2{
 //     margin-top: 60vh;
 //     margin-left: 82%;
 // }
+
 .circle3 {
-    margin-top: 75vh;
-    margin-left: 82%;
+    bottom: 15px;
+    right: 18%;
 }
 
 .half-circle {
@@ -60,14 +62,24 @@
     padding-top: 80px;
 }
 
+.get-started-btn{
+    padding: 8px 30px;
+}
+
 
 @media screen and (max-width:700px) {
+
+    .circle1 {
+        top: 83px;
+        left: 85%;
+    }
+
     .content {
         padding: 40px 5px;
         padding-bottom: 20px;
     }
 
-    .lap-mobile-div{
+    .lap-mobile-div {
         padding-top: 0px;
     }
 
