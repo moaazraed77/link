@@ -1,4 +1,3 @@
-
 /* ---------------------------------------- carasouel view ---------------------------------- */
 .container-view {
     margin-bottom: 100px;
@@ -15,36 +14,54 @@
     overflow-x: hidden;
 }
 
+.total-img-bg {
+    height: 100%;
+}
+
 .carasouel .carasouel-container {
     position: absolute;
     top: 0px;
-    left: 102%;    
+    left: 102%;
     height: 100%;
     width: 100%;
     /* display: none; */
     border-radius: 10px;
 }
 
-.carasouel .carasouel-container img{
+.carasouel .carasouel-container img {
     height: 100%;
-    width: 100% ;
+    width: 100%;
 }
 
-.container-view button {
+.carasouel button {
     position: absolute;
-    top: 50%;
+    top: calc( 50% - 35px );
+    background: none;
+    border: none;
+    font-size: 35px;
+    color: goldenrod;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.carasouel .btn-rtl{
+    right: 0;
+}
+
+.carasouel .btn-ltr {
     left: 0;
 }
 
-.container-view .btn-rtl {
-    left: auto;
-    right: 0;
+.frist-view{
+    display: block !important;
+    top: 65px;
+    left: 0%;
 }
 
 .active-from-right-to-left {
     display: block !important;
     animation-name: carasouel_from_right_to_left;
-    animation-duration: 8s;
+    animation-duration: 10s;
     animation-timing-function: ease-in-out;
     animation-direction: alternate;
     animation-fill-mode: forwards;
@@ -54,7 +71,7 @@
 .active-from-left-to-right {
     display: block !important;
     animation-name: carasouel_from_left_to_right;
-    animation-duration: 8s;
+    animation-duration: 10s;
     animation-timing-function: ease-in-out;
     animation-direction: alternate;
     animation-fill-mode: forwards;
@@ -105,4 +122,112 @@
     }
 }
 
-/* ---------------------------------------- carasouel view ---------------------------------- */
+/* ---------------------------------------- End carasouel view ---------------------------------- */
+
+
+
+
+
+
+
+ /* ---------------------------------------- Start Cards ---------------------------------------- */
+
+.cards {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 600px;
+}
+
+.cards .box {
+    position: relative;
+    height: 245px !important;
+    width: 270px;
+    margin: 0px 25px;
+    /* width: 25% !important; */
+}
+
+.cards .box div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100% !important;
+    width: 100% !important;
+    border-radius: 32% 0px;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    transition: 1s;
+    background-color: #d1a401;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cards .box div p{
+    font-size: 25px;
+    height: 80%;
+    width: 80%;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    text-shadow: 0 0 1px black;
+}
+
+.cards .box .back {
+    transform: rotateY(180deg);
+    background-color: rgb(215, 215, 215);
+}
+
+.cards .box .front p {
+    color: white;
+}
+.cards .box .back p {
+    color: black;
+}
+
+.cards .box:hover .front {
+    transform: rotateY(180deg);
+    transform-origin: center;
+}
+
+.cards .box:hover .back {
+    transform: rotateY(0deg);
+    transform-origin: center;
+}
+
+.desktop{
+    display: block !important;
+}
+
+.mobile{
+    display: none !important;
+}
+
+
+@media screen and (max-width:700px){
+
+    .carasouel {
+        height: 450px;
+    }
+
+    .mobile{
+        display: block !important;
+    }
+
+    .desktop{
+        display: none !important;
+    }
+
+    .cards .box {
+        height: 245px !important;
+        width: 270px;
+    }
+}
+ /* ---------------------------------------- End Cards ---------------------------------------- */

@@ -8,7 +8,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminModule } from './admin/admin.module';
-import { CarasouelDirective } from './Modules/directives/carasouel.directive';
+import { LoginComponent } from './components/login/login.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CarasouelDirective } from './Modules/directives/carasouel.directive';
     HeaderComponent,
     FooterComponent,
     AdminComponent,
-    CarasouelDirective
+    LoginComponent,
+    SignUpComponent,
   ],
   imports: [
     BrowserModule,

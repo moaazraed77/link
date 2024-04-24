@@ -26,21 +26,30 @@
 
   <div class="text-center">
     <h1>FQAs</h1>
-    <div class="scroll-div-container" appCarasouel>
+    <div class="scroll-div-container desktop">
       <div class="text-center carasouel">
-        <img src="assets/1.jpg" class="d-block w-100" alt="...">
-
+        <img src="assets/1.jpg" class="d-block w-100 total-img-bg" alt="...">
+        <button class="btn-rtl" id="movingRTL" (click)="addActiveFromRTL()"><i class="bi bi-caret-right"></i></button>
+        <button class="btn-ltr" id="movingLTR" (click)="addActiveFromLTR()"><i class="bi bi-caret-left"></i></button>
         <div class="carasouel-container">
           <!-- this image for carasouel image movement -->
           <!-- <img src="assets/1.jpg" class="d-block w-100" alt="..."> -->
           <div class="cards">
             <div class="box">
-              <img src="assets/1.png" alt="" class="front">
-              <img src="assets/line.png" alt="" class="back">
+              <div class="front">
+                <p>ما هي الخدمات التي يقدمها الموقع؟</p>
+              </div>
+              <div class="back">
+                <p>صفحة واحدة تجمع بين روابطك</p>
+              </div>
             </div>
             <div class="box">
-              <img src="assets/1.png" alt="" class="front">
-              <img src="assets/line.png" alt="" class="back">
+              <div class="front">
+                <p> ماذا سوف استفاد من الموقع ؟</p>
+              </div>
+              <div class="back">
+                <p> سهولة وصول عملائك الي جميع حساباتك بسهولة</p>
+              </div>
             </div>
           </div>
         </div>
@@ -49,12 +58,20 @@
           <!-- <img src="assets/1.jpg" class="d-block w-100" alt="..."> -->
           <div class="cards">
             <div class="box">
-              <img src="assets/1.png" alt="" class="front">
-              <img src="assets/line.png" alt="" class="back">
+              <div class="front">
+                <p> هل يمكنني امتلاك اكثر من حساب ؟</p>
+              </div>
+              <div class="back">
+                <p> نعم , يمكنك امتلاك اكثر من حساب بحيث يكون لكل حساب عنوان بريد الكتروني مختلف</p>
+              </div>
             </div>
             <div class="box">
-              <img src="assets/1.png" alt="" class="front">
-              <img src="assets/line.png" alt="" class="back">
+              <div class="front">
+                <p> كيف يمكنني اضافة الروابط الخاصة بي ؟</p>
+              </div>
+              <div class="back">
+                <p> كل ما عليك هو تسجيل الدخول للموقع واضافة روابطك بسهولة</p>
+              </div>
             </div>
           </div>
         </div>
@@ -63,60 +80,180 @@
           <!-- <img src="assets/1.jpg" class="d-block w-100" alt="..."> -->
           <div class="cards">
             <div class="box">
-              <img src="assets/1.png" alt="" class="front">
-              <img src="assets/line.png" alt="" class="back">
+              <div class="front">
+                <p> هل يمكنني تحديد صورة خلفية للراوبط الخاصة بي ؟</p>
+              </div>
+              <div class="back">
+                <p> نعم , عن طريق الذهاب الي الملف الشخصي و قم رفع و تغييرالصورة</p>
+              </div>
             </div>
             <div class="box">
-              <img src="assets/1.png" alt="" class="front">
-              <img src="assets/line.png" alt="" class="back">
+              <div class="front">
+                <p> كيف يمكنني اضافة الروابط الخاصة بي ؟</p>
+              </div>
+              <div class="back">
+                <p> كل ما عليك هو تسجيل الدخول للموقع واضافة روابطك بسهولة</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carasouel-container">
+          <!-- this image for carasouel image movement -->
+          <!-- <img src="assets/1.jpg" class="d-block w-100" alt="..."> -->
+          <div class="cards">
+            <div class="box">
+              <div class="front">
+                <p> هل يمكنني تغيير اسم المستخدم الخاص بي ؟</p>
+              </div>
+              <div class="back">
+                <p> نعم , عن طريق الذهاب الي الملف الشخصي و تغييرة</p>
+              </div>
+            </div>
+            <div class="box">
+              <div class="front">
+                <p> هل يمكنني وضع اللوكيشن الخاص بي ؟</p>
+              </div>
+              <div class="back">
+                <p> بالطبع عن طريق اضافة لينك جوجل ماب </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- <div id="carouselExampleCaptions" class="carousel slide">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-          aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-          aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-          aria-label="Slide 3"></button>
+
+    <div class="scroll-div-container mobile">
+      <div class="text-center carasouel">
+        <img src="assets/1.jpg" class="d-block w-100 total-img-bg" alt="...">
+        <button class="btn-rtl" id="movingRTL" (click)="addActiveFromRTL()"><i class="bi bi-caret-right"></i></button>
+        <button class="btn-ltr" id="movingLTR" (click)="addActiveFromLTR()"><i class="bi bi-caret-left"></i></button>
+        <div class="carasouel-container">
+          <!-- this image for carasouel image movement -->
+          <!-- <img src="assets/1.jpg" class="d-block w-100" alt="..."> -->
+          <div class="cards">
+            <div class="box">
+              <div class="front">
+                <p>ما هي الخدمات التي يقدمها الموقع؟</p>
+              </div>
+              <div class="back">
+                <p>صفحة واحدة تجمع بين روابطك</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carasouel-container">
+          <!-- this image for carasouel image movement -->
+          <!-- <img src="assets/1.jpg" class="d-block w-100" alt="..."> -->
+          <div class="cards">
+            <div class="box">
+              <div class="front">
+                <p> ماذا سوف استفاد من الموقع ؟</p>
+              </div>
+              <div class="back">
+                <p> سهولة وصول عملائك الي جميع حساباتك بسهولة</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carasouel-container">
+          <!-- this image for carasouel image movement -->
+          <!-- <img src="assets/1.jpg" class="d-block w-100" alt="..."> -->
+          <div class="cards">
+            <div class="box">
+              <div class="front">
+                <p> هل يمكنني امتلاك اكثر من حساب ؟</p>
+              </div>
+              <div class="back">
+                <p> نعم , يمكنك امتلاك اكثر من حساب بحيث يكون لكل حساب عنوان بريد الكتروني مختلف</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carasouel-container">
+          <!-- this image for carasouel image movement -->
+          <!-- <img src="assets/1.jpg" class="d-block w-100" alt="..."> -->
+          <div class="cards">
+            <div class="box">
+              <div class="front">
+                <p> كيف يمكنني اضافة الروابط الخاصة بي ؟</p>
+              </div>
+              <div class="back">
+                <p> كل ما عليك هو تسجيل الدخول للموقع واضافة روابطك بسهولة</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carasouel-container">
+          <!-- this image for carasouel image movement -->
+          <!-- <img src="assets/1.jpg" class="d-block w-100" alt="..."> -->
+          <div class="cards">
+            <div class="box">
+              <div class="front">
+                <p> هل يمكنني تحديد صورة خلفية للراوبط الخاصة بي ؟</p>
+              </div>
+              <div class="back">
+                <p> نعم , عن طريق الذهاب الي الملف الشخصي و قم رفع و تغييرالصورة</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carasouel-container">
+          <!-- this image for carasouel image movement -->
+          <!-- <img src="assets/1.jpg" class="d-block w-100" alt="..."> -->
+          <div class="cards">
+            <div class="box">
+              <div class="front">
+                <p> هل يمكنني تغيير اسم المستخدم الخاص بي ؟</p>
+              </div>
+              <div class="back">
+                <p> نعم , عن طريق الذهاب الي الملف الشخصي و تغييرة</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carasouel-container">
+          <!-- this image for carasouel image movement -->
+          <!-- <img src="assets/1.jpg" class="d-block w-100" alt="..."> -->
+          <div class="cards">
+            <div class="box">
+              <div class="front">
+                <p> هل يمكنني وضع اللوكيشن الخاص بي ؟</p>
+              </div>
+              <div class="back">
+                <p> بالطبع عن طريق اضافة لينك جوجل ماب </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="assets/1.jpg" class="d-block w-100" alt="...">
-          <div class="carousel-caption d-none d-md-block">
-            <h5>First slide label</h5>
-            <p>Some representative placeholder content for the first slide.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="assets/1.jpg" class="d-block w-100" alt="...">
-          <div class="carousel-caption d-none d-md-block">
-            <h5>Second slide label</h5>
-            <p>Some representative placeholder content for the second slide.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="assets/1.jpg" class="d-block w-100" alt="...">
-          <div class="carousel-caption d-none d-md-block">
-            <h5>Third slide label</h5>
-            <p>Some representative placeholder content for the third slide.</p>
-          </div>
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-        data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-        data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div> -->
+    </div>
+
   </div>
 
+  <div class="text-center pt-5">
+    <h3> الحل الامثل لنشاطك التجاري </h3>
+    <div class=" d-flex justify-content-center flex-wrap">
+      <div class="col-sm-3">
+        <i class="bi bi-speedometer2 text-success "></i>
+        <h3>speed</h3> 
+      </div>
+      <div class="col-sm-3">
+        <i class="bi bi-shield-lock-fill text-secondary "></i>
+        <h3>safe</h3>
+      </div>
+      <div class="col-sm-3">
+        <i class="bi bi-share-fill text-primary"></i>
+        <h3>share</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="container pt-5 pb-5 d-flex justify-content-between align-items-center flex-wrap">
+    <div class="col-sm-6">
+      <img src="assets/2.jpg" alt="" class="social-image">
+    </div>
+    <div class="col-sm-5">
+      <h3 class="p-3 text-center text-secondary">الحل الامثل لوصول عملاءك اليك سجل الان وتواصل بسهولة وامان </h3>
+    </div>
+  </div>
 </div>
