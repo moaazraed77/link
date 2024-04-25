@@ -1,11 +1,12 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
+import * as Aos from "aos"
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss', '../../Modules/css-styles/carasouel.css']
 })
-export class HomeComponent implements AfterViewInit , OnDestroy {
+export class HomeComponent implements AfterViewInit , OnInit , OnDestroy {
 
   setActive = -1; // as a index of the images array
   intRTL: any;  // as an interval to get the interval in it 
@@ -13,6 +14,10 @@ export class HomeComponent implements AfterViewInit , OnDestroy {
   cararsouels: any; // as an array to get the html elements in it 
 
   constructor(private eleRef: ElementRef) {
+  }
+
+  ngOnInit(): void {
+    Aos.init()
   }
 
   ngAfterViewInit(): void {
@@ -26,7 +31,6 @@ export class HomeComponent implements AfterViewInit , OnDestroy {
       ele.classList.remove("active-from-left-to-right");
     })
   }
-
   // for adding active class on the elements and moving them from right to left
   addActiveFromRTL() {
     if (window.innerWidth > 700) {
