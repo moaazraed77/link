@@ -11,6 +11,7 @@ import { AdminModule } from './admin/admin.module';
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,9 @@ import { ProfileComponent } from './components/profile/profile.component';
     AppRoutingModule,
     AdminModule , // is shared module
   ],
-  providers: [],
+  providers: [
+    {provide:LocationStrategy,useClass:HashLocationStrategy}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
