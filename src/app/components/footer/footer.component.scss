@@ -5,10 +5,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 35px;
 }
 
 .bi{
     font-size: 30px;
+}
+
+.bi::before{
+    text-shadow: 0px 2px #a59f00bd;
+}
+
+.bi:hover::before{
+    text-shadow: 3px 3px #a59f00bd;
+    color: aliceblue;
 }
 
 .position-absolute{
