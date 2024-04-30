@@ -4,6 +4,9 @@
         <div class="col-sm-5 card" [style.backgroundImage]="url">
             <form (ngSubmit)="submit()" [formGroup]="profile">
                 <h2 class="text-center text-light title"> Profile Links</h2>
+                <a href="https://ahmed-abdelhamee.github.io/links-project/#/{{currentUser.userName}}" target="_blank">
+                    your link
+                </a>
                 <div class="form-group">
                     <input type="url" class="form-control" placeholder="facebook-url" formControlName="facebook">
                 </div>

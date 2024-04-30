@@ -10,7 +10,7 @@ import { DataService } from 'src/app/Modules/services/data.service';
   styleUrls: ['./profile.component.scss', '../../Modules/css-styles/user-forms-style.css']
 })
 export class ProfileComponent {
-  url = "url(/assets/2.png)";
+  url = "url(assets/2.png)";
   currentUser: user = {} as user;
   load: boolean = false;
 
