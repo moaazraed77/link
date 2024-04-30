@@ -2,25 +2,25 @@
 <div class="col-12">
     <div class="container">
         <div class="col-sm-5 card" [style.backgroundImage]="url">
-            <form>
+            <form (ngSubmit)="submit()" [formGroup]="profile">
                 <h2 class="text-center text-light title"> Profile Links</h2>
                 <div class="form-group">
-                    <input type="url" class="form-control" id="url" placeholder="facebook-url">
+                    <input type="url" class="form-control" placeholder="facebook-url" formControlName="facebook">
                 </div>
                 <div class="form-group">
-                    <input type="url" class="form-control" id="url" placeholder="tiktok-url">
+                    <input type="url" class="form-control" placeholder="tiktok-url" formControlName="tiktok">
                 </div>
                 <div class="form-group">
-                    <input type="url" class="form-control" id="url" placeholder="snapchat-url">
+                    <input type="url" class="form-control" placeholder="snapchat-url" formControlName="snapchat">
                 </div>
                 <div class="form-group">
-                    <input type="url" class="form-control" id="url" placeholder="X-url">
+                    <input type="url" class="form-control" placeholder="X-url" formControlName="X">
                 </div>
                 <div class="form-group">
-                    <input type="url" class="form-control" id="url" placeholder="whatsapp-url">
+                    <input type="url" class="form-control" placeholder="whatsapp-url" formControlName="whatsapp">
                 </div>
                 <div class="form-group">
-                    <input type="url" class="form-control" id="url" placeholder="instagram-url">
+                    <input type="url" class="form-control" placeholder="instagram-url" formControlName="instagram">
                 </div>
                 <div class="text-center">
                     <button class="btn btn-secondary text-capitalize" routerLink="/profile">Save</button>
@@ -29,3 +29,6 @@
         </div>
     </div>
 </div>
+
+
+<app-loader *ngIf="load"></app-loader>

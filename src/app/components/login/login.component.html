@@ -1,21 +1,23 @@
-
-
 <div class="col-12">
     <div class="container">
         <div class="col-sm-5 card">
-            <form>
+            <form [formGroup]="loginData" (ngSubmit)="signIn()">
                 <h2 class="text-center text-warning"> Login</h2>
                 <div class="form-group">
-                    <input type="email" class="form-control" id="email" placeholder="Email">
+                    <input type="email" class="form-control" id="email" placeholder="Email" formControlName="email">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" id="pass" placeholder="Password">
+                    <input type="password" class="form-control" id="pass" placeholder="Password"
+                        formControlName="password">
                 </div>
                 <div class="text-center">
-                    <button class="btn btn-secondary text-capitalize" routerLink="/profile">login</button>
+                    <button type="submit" class="btn btn-secondary text-capitalize">login</button>
                 </div>
             </form>
             <a routerLink="/sign-up" class="text-capitalize">create account</a>
         </div>
     </div>
 </div>
+
+
+<app-loader *ngIf="load"></app-loader>
