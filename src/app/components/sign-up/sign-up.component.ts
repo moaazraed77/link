@@ -28,6 +28,7 @@ export class SignUpComponent {
     whatsapp: [""],
     tiktok: [""],
     photoUrl: [""],
+    location: [""],
     userId: [""],
   })
 

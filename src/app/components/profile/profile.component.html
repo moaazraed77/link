@@ -1,7 +1,7 @@
 
 <div class="col-12">
     <div class="container">
-        <div class="col-sm-5 card" [style.backgroundImage]="url">
+        <div class="col-sm-5 card" style="background-image: url(/assets/2.png);background-repeat: no-repeat;">
             <form (ngSubmit)="submit()" [formGroup]="profile">
                 <h2 class="text-center text-light title"> Profile Links</h2>
                 <a href="https://ahmed-abdelhamee.github.io/links-project/#/{{currentUser.userName}}" target="_blank">
@@ -24,6 +24,9 @@
                 </div>
                 <div class="form-group">
                     <input type="url" class="form-control" placeholder="instagram-url" formControlName="instagram">
+                </div>
+                <div class="form-group">
+                    <input type="url" class="form-control" placeholder="location-url" formControlName="location">
                 </div>
                 <div class="text-center">
                     <button class="btn btn-secondary text-capitalize" routerLink="/profile">Save</button>

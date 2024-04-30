@@ -1,14 +1,13 @@
 
 .container{
-    height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 10px;
 }
 
 .card{
-    padding: 40px 10px;
-    padding-top: 20px;
+    padding: 20px 10px;
 }
 
 .form-control{

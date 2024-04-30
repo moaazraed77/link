@@ -1,33 +1,38 @@
 <div class="container d-flex justify-content-center align-items-center">
     <div class="col-sm-5 pt-4">
-        <div class="alert alert-success d-flex justify-content-center align-items-center">
+        <div class="alert alert-success d-flex justify-content-center align-items-center" *ngIf="currentUser.userName">
             <a [href]="currentUser.whatsapp" target="_blank">
                 <i class="bi bi-whatsapp"></i> what'sapp
             </a>
         </div>
-        <div class="alert alert-danger d-flex justify-content-center align-items-center">
+        <div class="alert alert-danger d-flex justify-content-center align-items-center"  *ngIf="currentUser.instagram">
             <a [href]="currentUser.instagram" target="_blank">
                 <i class="bi bi-instagram"></i>instagram
             </a>
         </div>
-        <div class="alert alert-dark d-flex justify-content-center align-items-center">
+        <div class="alert alert-dark d-flex justify-content-center align-items-center"  *ngIf="currentUser.tiktok">
             <a [href]="currentUser.tiktok" target="_blank">
                 <i class="bi bi-tiktok"></i> tiktok
             </a>
         </div>
-        <div class="alert alert-warning d-flex justify-content-center align-items-center">
+        <div class="alert alert-warning d-flex justify-content-center align-items-center"  *ngIf="currentUser.snapchat">
             <a [href]="currentUser.snapchat" target="_blank">
                 <i class="bi bi-snapchat"></i> snapchat
             </a>
         </div>
-        <div class="alert alert-dark d-flex justify-content-center align-items-center">
+        <div class="alert alert-dark d-flex justify-content-center align-items-center"  *ngIf="currentUser.X">
             <a [href]="currentUser.X" target="_blank">
                 <i class="bi bi-twitter-x"></i>
             </a>
         </div>
-        <div class="alert alert-primary d-flex justify-content-center align-items-center">
+        <div class="alert alert-primary d-flex justify-content-center align-items-center"  *ngIf="currentUser.facebook">
             <a [href]="currentUser.facebook" target="_blank">
                 <i class="bi bi-facebook"></i>facebook
+            </a>
+        </div>
+        <div class="alert alert-primary d-flex justify-content-center align-items-center"  *ngIf="currentUser.location">
+            <a [href]="currentUser.location" target="_blank">
+                <i class="bi bi-location"></i>Location
             </a>
         </div>
     </div>

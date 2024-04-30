@@ -8,5 +8,6 @@ export interface user{
     instagram:string,
     whatsapp:string,
     tiktok:string,
+    location: string,
     photoUrl:string
 }

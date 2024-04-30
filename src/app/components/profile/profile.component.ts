@@ -10,7 +10,7 @@ import { DataService } from 'src/app/Modules/services/data.service';
   styleUrls: ['./profile.component.scss', '../../Modules/css-styles/user-forms-style.css']
 })
 export class ProfileComponent {
-  url = "url(assets/2.png)";
+  url = "url(/assets/2.png)";
   currentUser: user = {} as user;
   load: boolean = false;
 
@@ -25,6 +25,7 @@ export class ProfileComponent {
     whatsapp: [""],
     tiktok: [""],
     photoUrl: [""],
+    location: [""],
     userId: [""],
   })
 
@@ -49,6 +50,7 @@ export class ProfileComponent {
           whatsapp: this.currentUser.whatsapp,
           tiktok: this.currentUser.tiktok,
           photoUrl: this.currentUser.photoUrl,
+          location: this.currentUser.location,
           userId: this.currentUser.userId,
         })
       }
