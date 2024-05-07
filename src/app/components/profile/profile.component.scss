@@ -1,0 +1,103 @@
+@import '/src/styles.scss'; // to import sass variables
+
+.card {
+    background-repeat: no-repeat;
+    margin-top: 10px;
+    border-radius: 13px;
+    background-color: #e9e5ff40;
+}
+
+.sidebar {
+    height: calc(100vh - 70px);
+    width: 70px;
+    background-color: $bg-color-warnings;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    position: relative;
+    padding-top: 70px;
+}
+
+.sidebar .bi {
+    font-size: 35px;
+    display: block;
+    margin-bottom: 18px;
+    color: white;
+}
+
+.profile {
+    height: 45px;
+    width: 45px;
+    padding: 0px;
+    border: solid 1px;
+    border-radius: 50%;
+}
+.position-bottom-abs{
+    position: absolute;
+    bottom: 20px;
+}
+
+.content {
+    padding: 20px;
+    width: calc(100% - 70px);
+}
+
+.btnsAdd{
+    font-size: 20px;
+    padding: 10px 20px;
+    color: white;
+}
+
+.alert{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    font-size: 1.1em;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+
+.alert{
+    margin-top: 10px;
+}
+
+h4 .bi,
+.alert .bi{
+    font-size: 35px;
+    position: absolute;
+    left: 0px;
+    top: -4px;
+}
+
+.alert .bi{
+    left: 5px;
+}
+
+.text-success{
+    color: #04cd8a !important;
+}
+
+h4{
+    text-transform: capitalize;
+}
+
+.link-view{
+    padding: 10px;
+    border-radius: 20px;
+    border: 5px solid black;
+    min-height: 425px;
+    width: 340px;
+    margin-top: 75px;
+}
+
+
+
+
+
+
+
+
+
+

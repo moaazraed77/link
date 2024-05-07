@@ -1,5 +1,7 @@
+@import '/src/styles.scss'; // to import sass variables
+
 .navbar{
-    background-color: #F1DF26 !important;
+    background-color: $bg-color-warnings !important;
 }
 
 .profile{
@@ -9,6 +11,4 @@
     border: solid 1px;
     border-radius: 50%;
 }
-
-
 

@@ -14,6 +14,8 @@ export class ProfileComponent {
   currentUser: user = {} as user;
   load: boolean = false;
 
+  showBtn:string=""
+
   profile = this.formBuilder.group({
     email: [""],
     password: [""],
@@ -70,6 +72,9 @@ export class ProfileComponent {
   }
 
 
+  show(id:string){
+    this.showBtn=id;
+  }
 
 
 

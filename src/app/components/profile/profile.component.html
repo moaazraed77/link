@@ -1,40 +1,110 @@
-
 <div class="col-12">
-    <div class="container">
-        <div class="col-sm-5 card" style="background-image: url(/assets/2.png);background-repeat: no-repeat;">
-            <form (ngSubmit)="submit()" [formGroup]="profile">
-                <h2 class="text-center text-light title"> Profile Links</h2>
-                <a href="https://ahmed-abdelhamee.github.io/links-project/#/{{currentUser.userName}}" target="_blank">
-                    your link
-                </a>
-                <div class="form-group">
-                    <input type="url" class="form-control" placeholder="facebook-url" formControlName="facebook">
+    <div class="col-sm-1 sidebar">
+        <div class="text-center">
+            <i class="bi bi-house-door-fill"></i>
+            <i class="bi bi-yelp"></i>
+        </div>
+        <img src="assets/man.png" alt="" class="profile position-bottom-abs">
+    </div>
+    <div class="col-sm-11">
+        <div class="col-sm-6 p-3 pb-0">
+            <div class="text-center">
+                <button class="btn btn-dark m-2 btnsAdd" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    <i class="bi bi-plus-circle"></i> Add Link
+                </button>
+                <div class="collapse" id="collapseExample">
+                    <div class="card card-body">
+                        <div class="icon-button" (click)="show('facebook')" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            <h4 class="position-relative text-dark"><i class="bi bi-facebook"></i> facebook</h4>
+                        </div>
+                    </div>
+                    <div class="card card-body" (click)="show('X')">
+                        <div class="icon-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            <h4 class="position-relative text-dark"><i class="bi bi-twitter-x"></i> X</h4>
+                        </div>
+                    </div>
+                    <div class="card card-body" (click)="show('instagram')">
+                        <div class="icon-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            <h4 class="position-relative text-danger"><i class="bi bi-instagram"></i> instagram</h4>
+                        </div>
+                    </div>
+                    <div class="card card-body" (click)="show('whatsapp')">
+                        <div class="icon-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            <h4 class="position-relative text-success"><i class="bi bi-whatsapp"></i> whatsapp</h4>
+                        </div>
+                    </div>
+                    <div class="card card-body" (click)="show('snapchat')">
+                        <div class="icon-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            <h4 class="position-relative text-warning"><i class="bi bi-snapchat"></i> snapchat</h4>
+                        </div>
+                    </div>
+                    <div class="card card-body" (click)="show('tiktok')">
+                        <div class="icon-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            <h4 class="position-relative text-dark"><i class="bi bi-tiktok"></i> tiktok</h4>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <input type="url" class="form-control" placeholder="tiktok-url" formControlName="tiktok">
+            </div>
+            <div class="p-3 pt-0">
+                <div class="text-center" *ngIf="showBtn">
+                    <form class="card" (ngSubmit)="submit()" [formGroup]="profile">
+                        <h4 class="text-dark text-capitalize">{{showBtn}}</h4>
+                        <div class="form-group" *ngIf="showBtn=='whatsapp'">
+                            <input type="url" class="form-control" placeholder="whatsapp-url"
+                                formControlName="whatsapp">
+                        </div>
+                        <div class="form-group" *ngIf="showBtn=='tiktok'">
+                            <input type="url" class="form-control" placeholder="tiktok-url" formControlName="tiktok">
+                        </div>
+                        <div class="form-group" *ngIf="showBtn=='instagram'">
+                            <input type="url" class="form-control" placeholder="instagram-url"
+                                formControlName="instagram">
+                        </div>
+                        <div class="form-group" *ngIf="showBtn=='X'">
+                            <input type="url" class="form-control" placeholder="X-url" formControlName="X">
+                        </div>
+                        <div class="form-group" *ngIf="showBtn=='facebook'">
+                            <input type="url" class="form-control" placeholder="facebook-url"
+                                formControlName="facebook">
+                        </div>
+                        <div class="form-group" *ngIf="showBtn=='snapchat'">
+                            <input type="url" class="form-control" placeholder="snapchat-url"
+                                formControlName="snapchat">
+                        </div>
+                        <div class="form-group" *ngIf="showBtn=='location'">
+                            <input type="url" class="form-control" placeholder="location-url"
+                                formControlName="location">
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-dark">save</button>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <input type="url" class="form-control" placeholder="snapchat-url" formControlName="snapchat">
-                </div>
-                <div class="form-group">
-                    <input type="url" class="form-control" placeholder="X-url" formControlName="X">
-                </div>
-                <div class="form-group">
-                    <input type="url" class="form-control" placeholder="whatsapp-url" formControlName="whatsapp">
-                </div>
-                <div class="form-group">
-                    <input type="url" class="form-control" placeholder="instagram-url" formControlName="instagram">
-                </div>
-                <div class="form-group">
-                    <input type="url" class="form-control" placeholder="location-url" formControlName="location">
-                </div>
-                <div class="text-center">
-                    <button class="btn btn-secondary text-capitalize" routerLink="/profile">Save</button>
-                </div>
-            </form>
+            </div>
+        </div>
+
+        <div class="col-sm-6 d-flex justify-content-center">
+            <div class="link-view text-center">
+                <img src="assets/man.png" alt="" class="profile">
+                <div class="alert alert-success" *ngIf="showBtn=='whatsapp'"><i class="bi bi-whatsapp"></i> whatsapp</div>
+                <div class="alert alert-danger" *ngIf="showBtn=='instagram'"><i class="bi bi-instagram"></i> instagram</div>
+                <div class="alert alert-dark" *ngIf="showBtn=='X'"><i class="bi bi-twitter-x"></i> X</div>
+                <div class="alert alert-primary" *ngIf="showBtn=='facebook'"><i class="bi bi-facebook"></i> facebook</div>
+                <div class="alert alert-warning" *ngIf="showBtn=='snapchat'"><i class="bi bi-snapchat"></i> snapchat</div>
+                <div class="alert alert-dark" *ngIf="showBtn=='tiktok'"><i class="bi bi-tiktok"></i> tiktok</div>
+            </div>
         </div>
     </div>
 </div>
 
+<div class="col-12">
 
+</div>
 <app-loader *ngIf="load"></app-loader>
