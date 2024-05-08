@@ -18,9 +18,10 @@ export class SignUpComponent {
     private dataServ: DataService, private route: Router) { }
   // sign Up Data value for create user 
   signUpData = this.formBuilder.group({
-    email: ["", Validators.required],
+    email: ["", [Validators.required,Validators.email]],
     password: ["", Validators.required],
     userName: ["", Validators.required],
+    Name: ["",[Validators.required, Validators.minLength(3)]],
     X: [""],
     snapchat: [""],
     facebook: [""],
@@ -57,10 +58,10 @@ export class SignUpComponent {
           // create user && check the user is signed up before or not
           this.authServ.signUp(this.signUpData.value).then(async user => {
             // add token as a practice
-            await user.user.getIdTokenResult(false).then(token => {
-              this.loginObject.token = token.token;
-              this.loginObject.authTime = token.authTime;
-            });
+            // await user.user.getIdTokenResult(false).then(token => {
+            //   this.loginObject.token = token.token;
+            //   this.loginObject.authTime = token.authTime;
+            // });
             // save user id
             this.loginObject.uid = user.user.uid;
             this.signUpData.patchValue({
@@ -72,7 +73,8 @@ export class SignUpComponent {
               this.route.navigate(["/profile"]);
               this.toastr.success("تم انشاء الحساب الخاص بك بنجاح")
             })
-          }).catch(() => {
+          }).catch((reject) => {
+            // if()
             this.route.navigate(["/login"])
             this.toastr.error(" يرجي تسجيل الدخول ", "ايميل موجود مسبقا")
           })
@@ -82,6 +84,10 @@ export class SignUpComponent {
         this.load = false;
       }
     });
+  }
+
+  get signUpControls(){
+    return this.signUpData.controls;
   }
 
 }
