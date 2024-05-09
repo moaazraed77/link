@@ -70,7 +70,7 @@ export class SignUpComponent {
             // save the local Storage data 
             localStorage.setItem("loginObject", JSON.stringify(this.loginObject))
             this.dataServ.userCreateData(this.signUpData.value).subscribe(data => {
-              this.route.navigate(["/profile"]);
+              this.route.navigate(["/mylinks"]);
               this.toastr.success("تم انشاء الحساب الخاص بك بنجاح")
             })
           }).catch((reject) => {

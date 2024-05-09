@@ -23,6 +23,7 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LinksComponent } from './components/links/links.component';
+import { MylinksComponent } from './components/mylinks/mylinks.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { LinksComponent } from './components/links/links.component';
     ProfileComponent,
     LoaderComponent,
     LinksComponent,
+    MylinksComponent,
   ],
   imports: [
     BrowserModule,

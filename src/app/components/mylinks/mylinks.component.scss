@@ -4,18 +4,16 @@
     background-repeat: no-repeat;
     margin-top: 10px;
     border-radius: 13px;
-    // background-color: #e9e5ff40;
 }
 
 .sidebar {
     height: 100vh;
-    // background-color: $bg-color-warnings;
-    // background-image: linear-gradient(54deg, #9b9606, transparent);
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     position: relative;
     padding-top: 70px;
+    box-shadow: inset -1px -1px 2px #00000014;
 }
 
 .sidebar .text-center {
@@ -137,6 +135,58 @@ h4 {
     background-color: #373737 !important;
 }
 
-input.border-success::placeholder {
+input.whatsapp-input::placeholder {
     color: #04cd8a;
+}
+
+input.facebook-input::placeholder {
+    color: blue;
+}
+
+input.instagram-input::placeholder {
+    color: #cd3d04;
+}
+
+input.snapchat-input::placeholder {
+    color: gold;
+}
+
+.whatsapp-input {
+    box-shadow: inset -3px -3px 7px #cdffbb, inset 3px 3px 7px #cdffbb;
+}
+
+.instagram-input {
+    box-shadow: inset -3px -3px 7px #ffdfe8, inset 3px 3px 7px #ffdfe8;
+}
+
+.snapchat-input {
+    box-shadow: inset -3px -3px 7px #d5ca3e, inset 3px 3px 7px #eae173;
+}
+
+.tiktok-input,
+.x-input {
+    box-shadow: inset -3px -3px 7px lightgray, inset 3px 3px 7px lightgray;
+}
+
+.snapchat-input {
+    box-shadow: inset -3px -3px 7px lightyellow, inset 3px 3px 7px lightyellow;
+}
+
+.facebook-input {
+    box-shadow: inset -3px -3px 7px lightblue, inset 3px 3px 7px lightblue;
+}
+
+
+.choose-link {
+    background-color: antiquewhite;
+    border-radius: 15px;
+    margin-top: 67px;
+}
+
+.choose-link h1 {
+    text-align: center;
+    font-family: initial;
+    font-style: italic;
+    padding: 45px 0px;
+    width: 100%;
 }

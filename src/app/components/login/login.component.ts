@@ -32,7 +32,7 @@ export class LoginComponent {
       });
       this.loginObject.uid = user.user.uid;
       localStorage.setItem("loginObject", JSON.stringify(this.loginObject))
-      this.route.navigate(["/profile"])
+      this.route.navigate(["/mylinks"])
       this.toastr.success("تم تسجيل الدخول بنجاح")
     }).catch(err => {
       this.route.navigate(["/sign-up"])
