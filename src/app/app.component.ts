@@ -9,16 +9,24 @@ import { NavigationEnd, Router } from '@angular/router';
 export class AppComponent {
   title = 'links-project';
 
+  header_footer_view:boolean=true;
+
   constructor(private route: Router) {
     route.events.subscribe(events => {
-      if (events instanceof NavigationEnd)
+      if (events instanceof NavigationEnd) {
         if (events.url.endsWith("home")) {
-          if (sessionStorage.getItem("reloadHome") != "homeReloaded"){
+          if (sessionStorage.getItem("reloadHome") != "homeReloaded") {
             location.reload()
-          sessionStorage.setItem("reloadHome", "homeReloaded");
-          }else
+            sessionStorage.setItem("reloadHome", "homeReloaded");
+          } else
             sessionStorage.setItem("reloadHome", "");
         }
+        if (events.url.endsWith("mylinks")) {
+          this.header_footer_view=false;
+        }else{
+          this.header_footer_view=true;
+        }
+      }
     })
   }
 }
