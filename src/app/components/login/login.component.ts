@@ -23,17 +23,17 @@ export class LoginComponent {
 
   load: boolean = false;
 
-  async signIn() {
+  signIn() {
     this.load = true
-    await this.authServ.signIn(this.loginData.value).then(async user => {
-      await user.user.getIdTokenResult(false).then(token => {
+    this.authServ.signIn(this.loginData.value).then(async user => {
+      user.user.getIdTokenResult(false).then(token => {
         this.loginObject.token = token.token;
         this.loginObject.authTime = token.authTime;
       });
       this.loginObject.uid = user.user.uid;
       localStorage.setItem("loginObject", JSON.stringify(this.loginObject))
-      this.route.navigate(["/mylinks"])
       this.toastr.success("تم تسجيل الدخول بنجاح")
+      this.route.navigate(["/mylinks"])
     }).catch(err => {
       this.route.navigate(["/sign-up"])
       this.toastr.error("يرجي انشاء الحساب الخاص بك ")

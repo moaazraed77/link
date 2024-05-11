@@ -11,16 +11,17 @@
                 <i class="bi bi-emoji-smile"></i>
                 <small>appearence</small>
             </div>
-           
+
             <div>
                 <i class="bi bi-bar-chart"></i>
                 <small>analystic</small>
             </div>
         </div>
-        <img src="assets/man.png" alt="" class="profile position-bottom-abs">
+        <img [src]="currentUser.photoUrl" alt="" class="profile position-bottom-abs">
     </div>
     <div class="col-sm-11 content">
         <div class="col-sm-6 p-3 pb-0">
+             <!-- collapse part view -->
             <div class="text-center" *ngIf="partView=='home'">
                 <h1>Hello , {{currentUser.Name}}</h1>
                 <h6 class="text-start">l'ts create your social link</h6>
@@ -29,7 +30,7 @@
                     <i class="bi bi-plus-circle"></i> Add Link</button>
                 <button class="btn btn-warning m-2 btnsAdd text-dark" type="button" data-bs-toggle="collapse"
                     data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                    <i class="bi bi-pencil-square"></i> Edit Link  </button>
+                    <i class="bi bi-pencil-square"></i> Edit Link </button>
                 <div class="collapse" id="collapseExample">
                     <div class="card card-body bg-success">
                         <div class="icon-button">
@@ -47,7 +48,7 @@
                                         <option [value]="country" *ngFor="let country of countries; let i = index">
                                             {{country}}</option>
                                     </select>
-                                    <input type="url" class="form-control whatsapp-input" placeholder="whatsapp-url"
+                                    <input type="url" class="form-control whatsapp-input" placeholder="whatsapp-number"
                                         formControlName="whatsapp">
                                 </div>
                                 <div class="text-center">
@@ -151,19 +152,7 @@
                     </div>
                 </div>
             </div>
-            <div class="text-center" *ngIf="partView=='appearence'">
-                <h1 class="p-4">Appearence</h1>
-                <div class="form p-5">
-                    <div class="form-group">
-                        <label for="file" style="float: left;"><b>upload your photo</b></label>
-                        <input type="file" class="form-control" name="" id="">
-                    </div>
-                    <div class="form-group">
-                        <label for="name" style="float: left;"><b>change your name</b></label>
-                        <input type="text" class="form-control" name="" id="" placeholder="your name" formControlName="name">
-                    </div>
-                </div>
-            </div>
+             <!-- links choosed view -->
             <div class="p-5 pt-0" *ngIf="partView=='home'">
                 <div class="choose-link" *ngIf="!currentUser.facebook && !currentUser.whatsapp && !currentUser.tiktok 
                 && !currentUser.X && !currentUser.snapchat && !currentUser.instagram  ">
@@ -206,15 +195,36 @@
                     </span>
                 </div>
             </div>
+             <!-- appearence view -->
+             <div class="text-center" *ngIf="partView=='appearence'">
+                <h1 class="p-4">Appearence</h1>
+                <form [formGroup]="profile" class="p-5" (ngSubmit)="uploadPhoto()">
+                    <div class="form-group pb-4">
+                        <label for="file" style="float: left;"><b>upload your photo</b></label>
+                        <input type="file" class="form-control" name="" id="" (change)="uploadPromo($event)">
+                        <img [src]="photoUrl" alt="" class="photo-promo" *ngIf="photoUrl">
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="name" style="float: left;"><b>change your name</b></label>
+                        <input type="text" class="form-control" name="" id="" placeholder="your name"
+                            formControlName="Name">
+                    </div>
+                    <div class="text-center">
+                        <p *ngIf="uploading=='uploadingImage'">saving your data ...</p>
+                        <button class="btn btn-primary"> save</button>
+                    </div>
+                </form>
+            </div>
         </div>
-
+         <!-- mobile left view -->
         <div class="col-sm-6 bg-light d-flex justify-content-center">
             <div class="link-view-div text-center">
                 <img src="assets/logo.jpg" alt="" class="bg-img">
-                <img src="assets/man.png" alt="" class="profile">
+                <img [src]="currentUser.photoUrl" alt="" class="profile">
                 <div class="alert bg-success" *ngIf="currentUser.whatsapp"><i class="bi bi-whatsapp"></i> whatsapp</div>
                 <div class="alert bg-warning" *ngIf="currentUser.snapchat"><i class="bi bi-snapchat"></i> snapchat</div>
-                <div class="alert bg-danger" *ngIf="currentUser.instagram"><i class="bi bi-instagram"></i> instagram  </div>
+                <div class="alert bg-danger" *ngIf="currentUser.instagram"><i class="bi bi-instagram"></i> instagram
+                </div>
                 <div class="alert bg-dark" *ngIf="currentUser.tiktok"><i class="bi bi-tiktok"></i> tiktok</div>
                 <div class="alert bg-primary" *ngIf="currentUser.facebook"><i class="bi bi-facebook"></i> facebook</div>
                 <div class="alert bg-dark" *ngIf="currentUser.X"><i class="bi bi-twitter-x"></i> X</div>

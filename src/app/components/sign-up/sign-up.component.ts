@@ -58,6 +58,7 @@ export class SignUpComponent {
           // create user && check the user is signed up before or not
           this.authServ.signUp(this.signUpData.value).then(async user => {
             // add token as a practice
+            
             // await user.user.getIdTokenResult(false).then(token => {
             //   this.loginObject.token = token.token;
             //   this.loginObject.authTime = token.authTime;

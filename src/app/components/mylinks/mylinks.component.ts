@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { user } from 'src/app/Modules/interfaces/user.interface';
 import { DataService } from 'src/app/Modules/services/data.service';
 import { PhoneCountriesAPIService } from 'src/app/Modules/services/phone-countries-api.service';
+import { AngularFireStorage } from '@angular/fire/compat/storage';  // write this special code for upload img 
 
 @Component({
   selector: 'app-mylinks',
@@ -12,7 +13,6 @@ import { PhoneCountriesAPIService } from 'src/app/Modules/services/phone-countri
 })
 export class MylinksComponent {
 
-  url = "url(/assets/2.png)";
   currentUser: user = {} as user;
   load: boolean = false;
   showBtn: string = "";
@@ -34,10 +34,13 @@ export class MylinksComponent {
   })
   countries: any[] = [];
   arr: any[] = [];
-  partView:string="home"
+  partView: string = "home";
+  uploading: string = ""
+  photoUrl: string = ""
+  imgFile: any;
 
   constructor(private dataServ: DataService, private PhoneCountriesAPI: PhoneCountriesAPIService,
-    private formBuilder: FormBuilder, private toastr: ToastrService) {
+    private formBuilder: FormBuilder, private toastr: ToastrService, private firestorage: AngularFireStorage) {
 
     PhoneCountriesAPI.getCountryData().subscribe(data => {
       for (let i = 0; i < data.length; i++) {
@@ -126,8 +129,28 @@ export class MylinksComponent {
 
 
 
+  // for upload image 
+  uploadPromo(event: any) {
+    let loader = new FileReader();
+    this.imgFile = event.target.files[0]
+    loader.readAsDataURL(event.target.files[0])
+    loader.onload = (event) => {
+      this.photoUrl = event.target?.result?.toString()!;
+    }
+  }
 
-
-
+  async uploadPhoto() {
+    this.uploading = "uploadingImage";
+    if (this.imgFile) {
+      const path = `ecommerce/${new Date().getTime()}${this.imgFile.name}`; // we make name of file in firebase storage 
+      const uploadTask = await this.firestorage.upload(path, this.imgFile)
+      const url = await uploadTask.ref.getDownloadURL()
+      this.profile.patchValue({
+        photoUrl: url
+      })
+      this.uploading = "uploadedImage";
+    }
+    this.submit()
+  }
 
 }

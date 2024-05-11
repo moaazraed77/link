@@ -17,6 +17,7 @@ import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideDatabase, getDatabase } from '@angular/fire/database';
 import { provideStorage, getStorage } from '@angular/fire/storage';
+import {AngularFireModule, FIREBASE_OPTIONS} from '@angular/fire/compat'; // write this special code for upload img 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoaderComponent } from './components/loader/loader.component';
@@ -57,6 +58,8 @@ import { CountriesCodesPipe } from './Modules/pipes/countries-codes.pipe';
     ToastrModule.forRoot(),    // ToastrModule added
   ],
   providers: [
+     // write this special code for upload img 
+     { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
     { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]
