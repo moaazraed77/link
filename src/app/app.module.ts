@@ -24,6 +24,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LinksComponent } from './components/links/links.component';
 import { MylinksComponent } from './components/mylinks/mylinks.component';
+import { CountriesCodesPipe } from './Modules/pipes/countries-codes.pipe';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { MylinksComponent } from './components/mylinks/mylinks.component';
     LoaderComponent,
     LinksComponent,
     MylinksComponent,
+    CountriesCodesPipe,
   ],
   imports: [
     BrowserModule,

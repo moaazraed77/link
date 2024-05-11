@@ -62,7 +62,7 @@
 }
 
 .btnsAdd {
-    font-size: 20px;
+    font-size: 17px;
     padding: 10px 20px;
     color: white;
 }
@@ -151,8 +151,14 @@ input.snapchat-input::placeholder {
     color: gold;
 }
 
+.whatsapp-group{
+    display: flex;
+    align-items: center;
+}
 .whatsapp-input {
     box-shadow: inset -3px -3px 7px #cdffbb, inset 3px 3px 7px #cdffbb;
+    width: calc(99% - 110px) !important;
+    margin-left: 10px !important;
 }
 
 .instagram-input {
@@ -189,4 +195,23 @@ input.snapchat-input::placeholder {
     font-style: italic;
     padding: 45px 0px;
     width: 100%;
+}
+
+.collapse{
+    margin-top: 25px;
+}
+
+select.countryCode{
+    width: 100px !important;
+    height: 40px;
+}
+
+.link-data{
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    text-transform: capitalize;
 }

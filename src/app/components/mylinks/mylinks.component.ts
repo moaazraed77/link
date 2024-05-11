@@ -3,6 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { user } from 'src/app/Modules/interfaces/user.interface';
 import { DataService } from 'src/app/Modules/services/data.service';
+import { PhoneCountriesAPIService } from 'src/app/Modules/services/phone-countries-api.service';
 
 @Component({
   selector: 'app-mylinks',
@@ -10,17 +11,16 @@ import { DataService } from 'src/app/Modules/services/data.service';
   styleUrls: ['./mylinks.component.scss', '../../Modules/css-styles/user-forms-style.css']
 })
 export class MylinksComponent {
+
   url = "url(/assets/2.png)";
   currentUser: user = {} as user;
   load: boolean = false;
-
-  showBtn:string="";
-
-  links:string[]=[]
-
+  showBtn: string = "";
+  links: string[] = []
   profile = this.formBuilder.group({
     email: [""],
     password: [""],
+    Name: [""],
     userName: [""],
     X: [""],
     snapchat: [""],
@@ -32,8 +32,22 @@ export class MylinksComponent {
     location: [""],
     userId: [""],
   })
+  countries: any[] = [];
+  arr: any[] = [];
+  partView:string="home"
 
-  constructor(private dataServ: DataService, private formBuilder: FormBuilder, private toastr:ToastrService) {
+  constructor(private dataServ: DataService, private PhoneCountriesAPI: PhoneCountriesAPIService,
+    private formBuilder: FormBuilder, private toastr: ToastrService) {
+
+    PhoneCountriesAPI.getCountryData().subscribe(data => {
+      for (let i = 0; i < data.length; i++) {
+        if (i == 44 || i == 63)
+          continue
+        this.countries.push(data[i].idd.root + data[i].idd.suffixes[0])
+      }
+      this.countries.sort()
+    })
+
     let USR = JSON.parse(localStorage.getItem("loginObject")!); // get user data 
     dataServ.getUserData().subscribe({
       next: (value) => {
@@ -45,6 +59,7 @@ export class MylinksComponent {
         this.load = false;
         this.currentUser
         this.profile.patchValue({
+          Name: this.currentUser.Name,
           email: this.currentUser.email,
           userName: this.currentUser.userName,
           X: this.currentUser.X,
@@ -61,12 +76,12 @@ export class MylinksComponent {
     })
   }
 
-  submit(){
-    this.dataServ.getUserData().subscribe(data =>{
+  submit() {
+    this.dataServ.getUserData().subscribe(data => {
       for (const key in data) {
-        if(data[key].userId == this.currentUser.userId){
-          this.dataServ.updateUser(this.profile.value,key)?.subscribe(()=>{
-            this.toastr.warning("تم تعديل الرواط الخاصة بك")
+        if (data[key].userId == this.currentUser.userId) {
+          this.dataServ.updateUser(this.profile.value, key)?.subscribe(() => {
+            location.reload()
           })
         }
       }
@@ -74,9 +89,39 @@ export class MylinksComponent {
   }
 
 
-  show(item:string){
-    if(!this.links.find(ele=> ele == item))
-    this.links.push(item)
+  deleteLink(item: string) {
+    if (item == "whatsapp") {
+      this.profile.patchValue({
+        whatsapp: ""
+      })
+      this.currentUser.whatsapp = ""
+    } else if (item == "snapchat") {
+      this.profile.patchValue({
+        snapchat: ""
+      })
+      this.currentUser.snapchat = ""
+    } else if (item == "instagram") {
+      this.profile.patchValue({
+        instagram: ""
+      })
+      this.currentUser.instagram = ""
+    } else if (item == "tiktok") {
+      this.profile.patchValue({
+        tiktok: ""
+      })
+      this.currentUser.tiktok = ""
+    } else if (item == "facebook") {
+      this.profile.patchValue({
+        facebook: ""
+      })
+      this.currentUser.facebook = ""
+    } else if (item == "x") {
+      this.profile.patchValue({
+        X: ""
+      })
+      this.currentUser.X = ""
+    }
+    this.submit();
   }
 
 

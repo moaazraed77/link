@@ -1,3 +1,4 @@
+import { PhoneCountriesAPIService } from './../../Modules/services/phone-countries-api.service';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
@@ -14,7 +15,7 @@ export class ProfileComponent {
   currentUser: user = {} as user;
   load: boolean = false;
 
-  showBtn:string=""
+  showBtn: string = ""
 
   profile = this.formBuilder.group({
     email: [""],
@@ -31,8 +32,11 @@ export class ProfileComponent {
     userId: [""],
   })
 
-  constructor(private dataServ: DataService, private formBuilder: FormBuilder, private toastr:ToastrService) {
+  constructor(private dataServ: DataService, private formBuilder: FormBuilder,
+    private PhoneCountriesAPI: PhoneCountriesAPIService, private toastr: ToastrService) {
+
     let USR = JSON.parse(localStorage.getItem("loginObject")!); // get user data 
+
     dataServ.getUserData().subscribe({
       next: (value) => {
         for (const key in value) {
@@ -59,11 +63,11 @@ export class ProfileComponent {
     })
   }
 
-  submit(){
-    this.dataServ.getUserData().subscribe(data =>{
+  submit() {
+    this.dataServ.getUserData().subscribe(data => {
       for (const key in data) {
-        if(data[key].userId == this.currentUser.userId){
-          this.dataServ.updateUser(this.profile.value,key)?.subscribe(()=>{
+        if (data[key].userId == this.currentUser.userId) {
+          this.dataServ.updateUser(this.profile.value, key)?.subscribe(() => {
             this.toastr.warning("تم تعديل الرواط الخاصة بك")
           })
         }
@@ -72,8 +76,8 @@ export class ProfileComponent {
   }
 
 
-  show(id:string){
-    this.showBtn=id;
+  show(id: string) {
+    this.showBtn = id;
   }
 
 

@@ -10,4 +10,5 @@ export const environment = {
     messagingSenderId: '998981072679',
     measurementId: 'G-11W5CHWQH8',
   },
+  countriesCodes:"https://restcountries.com/v3.1/all"
 };
