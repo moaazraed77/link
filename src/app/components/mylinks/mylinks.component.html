@@ -37,14 +37,14 @@
                             <h5 class="position-relative" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseWhatsapp" aria-expanded="false"
                                 aria-controls="collapseWhatsapp"><i class="bi bi-whatsapp"></i> whatsapp</h5>
-                            <form class="card collapse" (ngSubmit)="submit()" [formGroup]="profile"
+                            <form class="card collapse" (ngSubmit)="submitWhatshapp()" [formGroup]="profile"
                                 id="collapseWhatsapp">
                                 <button type="button" class="btn-close" aria-label="Close" type="button"
                                     data-bs-toggle="collapse" data-bs-target="#collapseWhatsapp" aria-expanded="false"
                                     aria-controls="collapseWhatsapp"></button>
                                 <h6 class="text-dark text-capitalize">Add your whatsapp </h6>
                                 <div class="form-group whatsapp-group">
-                                    <select class="form-select countryCode" name="countryCode" id="countryCode">
+                                    <select class="form-select countryCode" name="countryCode" id="countryCode" [(ngModel)]="countryCode" [ngModelOptions]="{standalone: true}">
                                         <option [value]="country" *ngFor="let country of countries; let i = index">
                                             {{country}}</option>
                                     </select>
@@ -204,6 +204,11 @@
                         <input type="file" class="form-control" name="" id="" (change)="uploadPromo($event)">
                         <img [src]="photoUrl" alt="" class="photo-promo" *ngIf="photoUrl">
                     </div>
+                    <div class="form-group pb-4">
+                        <label for="file" style="float: left;"><b>upload background photo</b></label>
+                        <input type="file" class="form-control" name="" id="" (change)="uploadBackgroundPromo($event)">
+                        <img [src]="bgUrl" alt="" class="photo-promo" *ngIf="bgUrl">
+                    </div>
                     <div class="form-group mb-2">
                         <label for="name" style="float: left;"><b>change your name</b></label>
                         <input type="text" class="form-control" name="" id="" placeholder="your name"
@@ -219,7 +224,8 @@
          <!-- mobile left view -->
         <div class="col-sm-6 bg-light d-flex justify-content-center">
             <div class="link-view-div text-center">
-                <img src="assets/logo.jpg" alt="" class="bg-img">
+                <img [src]="currentUser.bgUrl" alt="" class="bg-img" *ngIf="currentUser.bgUrl">
+                <!-- <img src="assets/logo.jpg" alt="" class="bg-img" *ngIf="!currentUser.bgUrl"> -->
                 <img [src]="currentUser.photoUrl" alt="" class="profile">
                 <div class="alert bg-success" *ngIf="currentUser.whatsapp"><i class="bi bi-whatsapp"></i> whatsapp</div>
                 <div class="alert bg-warning" *ngIf="currentUser.snapchat"><i class="bi bi-snapchat"></i> snapchat</div>

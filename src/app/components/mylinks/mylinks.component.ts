@@ -29,6 +29,7 @@ export class MylinksComponent {
     whatsapp: [""],
     tiktok: [""],
     photoUrl: [""],
+    bgUrl: [""],
     location: [""],
     userId: [""],
   })
@@ -37,7 +38,10 @@ export class MylinksComponent {
   partView: string = "home";
   uploading: string = ""
   photoUrl: string = ""
+  bgUrl: string = ""
   imgFile: any;
+  imgBackgroundFile: any;
+  countryCode:string=""
 
   constructor(private dataServ: DataService, private PhoneCountriesAPI: PhoneCountriesAPIService,
     private formBuilder: FormBuilder, private toastr: ToastrService, private firestorage: AngularFireStorage) {
@@ -91,6 +95,14 @@ export class MylinksComponent {
     })
   }
 
+  submitWhatshapp(){
+    let whatsappNumber= this.countryCode +this.profile.value.whatsapp ;
+    this.profile.patchValue({
+      whatsapp: whatsappNumber
+    })
+    this.submit()
+  }
+
 
   deleteLink(item: string) {
     if (item == "whatsapp") {
@@ -139,6 +151,15 @@ export class MylinksComponent {
     }
   }
 
+  uploadBackgroundPromo(event: any) {
+    let loader = new FileReader();
+    this.imgBackgroundFile = event.target.files[0]
+    loader.readAsDataURL(event.target.files[0])
+    loader.onload = (event) => {
+      this.bgUrl = event.target?.result?.toString()!;
+    }
+  }
+
   async uploadPhoto() {
     this.uploading = "uploadingImage";
     if (this.imgFile) {
@@ -148,9 +169,18 @@ export class MylinksComponent {
       this.profile.patchValue({
         photoUrl: url
       })
+    }
+    if (this.imgBackgroundFile) {
+      const path = `ecommerce/${new Date().getTime()}${this.imgBackgroundFile.name}`; // we make name of file in firebase storage 
+      const uploadTask = await this.firestorage.upload(path, this.imgBackgroundFile)
+      const bgUrl = await uploadTask.ref.getDownloadURL()
+      this.profile.patchValue({
+        bgUrl: bgUrl
+      })
       this.uploading = "uploadedImage";
     }
     this.submit()
   }
 
+ 
 }

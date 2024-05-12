@@ -10,5 +10,6 @@ export interface user{
     whatsapp:string,
     tiktok:string,
     location: string,
-    photoUrl:string
+    photoUrl:string,
+    bgUrl:string,
 }
