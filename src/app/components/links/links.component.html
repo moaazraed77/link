@@ -1,4 +1,4 @@
-<div class="container d-flex justify-content-center align-items-center">
+<!-- <div class="container d-flex justify-content-center align-items-center">
     <div class="col-sm-5 pt-4">
         <div class="alert alert-success d-flex justify-content-center align-items-center" *ngIf="currentUser.userName">
             <a [href]="currentUser.whatsapp" target="_blank">
@@ -35,5 +35,21 @@
                 <i class="bi bi-location"></i>Location
             </a>
         </div>
+    </div>
+</div> -->
+
+ <!-- mobile left view -->
+ <div class="col-12 bg-light d-flex justify-content-center">
+    <div class="link-view-div text-center">
+        <img [src]="currentUser.bgUrl" alt="" class="bg-img" *ngIf="currentUser.bgUrl">
+        <!-- <img src="assets/logo.jpg" alt="" class="bg-img" *ngIf="!currentUser.bgUrl"> -->
+        <img [src]="currentUser.photoUrl" alt="" class="profile">
+        <div class="alert bg-success" *ngIf="currentUser.whatsapp"><i class="bi bi-whatsapp"></i> whatsapp</div>
+        <div class="alert bg-warning" *ngIf="currentUser.snapchat"><i class="bi bi-snapchat"></i> snapchat</div>
+        <div class="alert bg-danger" *ngIf="currentUser.instagram"><i class="bi bi-instagram"></i> instagram
+        </div>
+        <div class="alert bg-dark" *ngIf="currentUser.tiktok"><i class="bi bi-tiktok"></i> tiktok</div>
+        <div class="alert bg-primary" *ngIf="currentUser.facebook"><i class="bi bi-facebook"></i> facebook</div>
+        <div class="alert bg-dark" *ngIf="currentUser.X"><i class="bi bi-twitter-x"></i> X</div>
     </div>
 </div>
