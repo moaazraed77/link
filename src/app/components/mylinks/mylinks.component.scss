@@ -116,12 +116,27 @@ h4 {
     min-height: 425px;
     width: 285px;
     margin-top: 75px;
+    height: fit-content;
 }
 
-.link-view-div a{
+.link-view-div a {
     position: absolute;
-    top: 10px;
+    top: -35px;
     left: 10px;
+}
+
+.link-view-div button {
+    position: absolute;
+    z-index: 2;
+    right: 2px;
+    top: -33px;
+    border-radius: 5px;
+    padding: 1px 8px;
+    padding-bottom: 1px;
+    padding-bottom: 1px;
+    line-height: initial;
+    padding-bottom: 3px;
+    font-size: smaller;
 }
 
 .link-view-div .bg-img {
@@ -157,10 +172,11 @@ input.snapchat-input::placeholder {
     color: gold;
 }
 
-.whatsapp-group{
+.whatsapp-group {
     display: flex;
     align-items: center;
 }
+
 .whatsapp-input {
     box-shadow: inset -3px -3px 7px #cdffbb, inset 3px 3px 7px #cdffbb;
     width: calc(99% - 110px) !important;
@@ -192,7 +208,7 @@ input.snapchat-input::placeholder {
     margin-top: 0px;
 }
 
-.collapse .btn-dark{
+.collapse .btn-dark {
     margin-top: 10px;
 }
 
@@ -210,16 +226,16 @@ input.snapchat-input::placeholder {
     width: 100%;
 }
 
-.collapse{
+.collapse {
     margin-top: 25px;
 }
 
-select.countryCode{
+select.countryCode {
     width: 100px !important;
     height: 40px;
 }
 
-.link-data{
+.link-data {
     padding: 15px;
     display: flex;
     justify-content: space-between;
@@ -229,42 +245,50 @@ select.countryCode{
     text-transform: capitalize;
 }
 
-.photo-promo{
+.photo-promo,
+.bg-promo {
     height: 140px;
     width: 140px;
     border-radius: 50%;
     margin-top: 8px;
 }
 
+.bg-promo {
+    border-radius: 10px;
+}
+
 
 @media screen and (max-width:700px) {
-    .sidebar{
+    .sidebar {
         height: fit-content;
         padding-top: 3px;
     }
+
     .sidebar .text-center {
         padding-top: 0px;
         display: inline-flex;
     }
-    .sidebar .bi{
+
+    .sidebar .bi {
         text-align: center;
         font-size: 23px;
     }
-    .sidebar div{
+
+    .sidebar div {
         padding-left: 10px;
     }
-    .sidebar small{
 
-    }
-    .btnsAdd{
+    .btnsAdd {
         padding: 10px 15px;
         font-size: 14px;
     }
+
     .position-bottom-abs {
         position: absolute;
         top: 15px;
         right: 10px;
     }
+
     .sidebar img.positon-absolute {
         position: absolute;
         top: 0;

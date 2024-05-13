@@ -22,6 +22,7 @@ export class SignUpComponent {
     password: ["", Validators.required],
     userName: ["", Validators.required],
     Name: ["",[Validators.required, Validators.minLength(3)]],
+    bio: [""],
     X: [""],
     snapchat: [""],
     facebook: [""],

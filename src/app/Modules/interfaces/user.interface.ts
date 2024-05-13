@@ -3,6 +3,7 @@ export interface user{
     email:string,
     userName:string,
     Name:string,
+    bio:string,
     X:string,
     snapchat:string,
     facebook:string,

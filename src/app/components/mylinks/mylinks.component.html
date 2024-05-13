@@ -19,7 +19,7 @@
     </div>
     <div class="col-sm-11 content">
         <div class="col-sm-6 p-3 pb-0">
-             <!-- collapse part view -->
+            <!-- collapse part view -->
             <div class="text-center" *ngIf="partView=='home'">
                 <h1>Hello , {{currentUser.Name}}</h1>
                 <h6 class="text-start">l'ts create your social link</h6>
@@ -42,7 +42,8 @@
                                     aria-controls="collapseWhatsapp"></button>
                                 <h6 class="text-dark text-capitalize">Add your whatsapp </h6>
                                 <div class="form-group whatsapp-group">
-                                    <select class="form-select countryCode" name="countryCode" id="countryCode" [(ngModel)]="countryCode" [ngModelOptions]="{standalone: true}">
+                                    <select class="form-select countryCode" name="countryCode" id="countryCode"
+                                        [(ngModel)]="countryCode" [ngModelOptions]="{standalone: true}">
                                         <option [value]="country" *ngFor="let country of countries; let i = index">
                                             {{country}}</option>
                                     </select>
@@ -150,7 +151,7 @@
                     </div>
                 </div>
             </div>
-             <!-- links choosed view -->
+            <!-- links choosed view -->
             <div class="p-5 pt-0" *ngIf="partView=='home'">
                 <div class="choose-link" *ngIf="!currentUser.facebook && !currentUser.whatsapp && !currentUser.tiktok 
                 && !currentUser.X && !currentUser.snapchat && !currentUser.instagram  ">
@@ -193,24 +194,31 @@
                     </span>
                 </div>
             </div>
-             <!-- appearence view -->
-             <div class="text-center" *ngIf="partView=='appearence'">
+            <!-- appearence view -->
+            <div class="text-center" *ngIf="partView=='appearence'">
                 <h1 class="p-4">Appearence</h1>
                 <form [formGroup]="profile" class="p-5" (ngSubmit)="uploadPhoto()">
                     <div class="form-group pb-4">
                         <label for="file" style="float: left;"><b>upload your photo</b></label>
-                        <input type="file" class="form-control" name="" id="" (change)="uploadPromo($event)">
+                        <input type="file" class="form-control" name="bg-promo" id="bg-promo"
+                            (change)="uploadPromo($event)">
                         <img [src]="photoUrl" alt="" class="photo-promo" *ngIf="photoUrl">
                     </div>
                     <div class="form-group pb-4">
                         <label for="file" style="float: left;"><b>upload background photo</b></label>
-                        <input type="file" class="form-control" name="" id="" (change)="uploadBackgroundPromo($event)">
-                        <img [src]="bgUrl" alt="" class="photo-promo" *ngIf="bgUrl">
+                        <input type="file" class="form-control" name="bg-promo" id="bg-promo"
+                            (change)="uploadBackgroundPromo($event)">
+                        <img [src]="bgUrl" alt="" class="bg-promo" *ngIf="bgUrl">
                     </div>
                     <div class="form-group mb-2">
                         <label for="name" style="float: left;"><b>change your name</b></label>
                         <input type="text" class="form-control" name="" id="" placeholder="your name"
                             formControlName="Name">
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="name" style="float: left;"><b>change your bio</b></label>
+                        <input type="text" class="form-control" name="" id="" placeholder="your bio"
+                            formControlName="bio">
                     </div>
                     <div class="text-center">
                         <p *ngIf="uploading=='uploadingImage'">saving your data ...</p>
@@ -219,13 +227,18 @@
                 </form>
             </div>
         </div>
-         <!-- mobile left view -->
-        <div class="col-sm-6 bg-light d-flex justify-content-center">
+        <!-- mobile left view -->
+        <div class="col-sm-6 bg-light d-flex justify-content-center" style="height: 100vh;">
             <div class="link-view-div text-center">
-                <a href="https://moaazraed77.github.io/link/#/{{currentUser.userName}}" target="_blank" >your link</a>
+                <a href="https://moaazraed77.github.io/link/#/{{currentUser.userName}}" target="_blank" id="link">your
+                    link</a>
+                <button (click)="copyLink()">{{copyLinkText}}</button>
                 <img [src]="currentUser.bgUrl" alt="" class="bg-img" *ngIf="currentUser.bgUrl">
                 <!-- <img src="assets/logo.jpg" alt="" class="bg-img" *ngIf="!currentUser.bgUrl"> -->
                 <img [src]="currentUser.photoUrl" alt="" class="profile">
+                <br>
+                <h6 class="text-capitalize text-center" *ngIf="currentUser.Name">{{currentUser.Name}}</h6>
+                <h6 class="text-capitalize text-center" *ngIf="currentUser.bio">{{currentUser.bio}}</h6>
                 <div class="alert bg-success" *ngIf="currentUser.whatsapp"><i class="bi bi-whatsapp"></i> whatsapp</div>
                 <div class="alert bg-warning" *ngIf="currentUser.snapchat"><i class="bi bi-snapchat"></i> snapchat</div>
                 <div class="alert bg-danger" *ngIf="currentUser.instagram"><i class="bi bi-instagram"></i> instagram

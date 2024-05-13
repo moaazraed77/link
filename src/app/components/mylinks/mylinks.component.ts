@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { user } from 'src/app/Modules/interfaces/user.interface';
@@ -21,6 +21,7 @@ export class MylinksComponent {
     email: [""],
     password: [""],
     Name: [""],
+    bio:[""],
     userName: [""],
     X: [""],
     snapchat: [""],
@@ -39,9 +40,10 @@ export class MylinksComponent {
   uploading: string = ""
   photoUrl: string = ""
   bgUrl: string = ""
-  imgFile: any;
-  imgBackgroundFile: any;
-  countryCode:string=""
+  imgFile: any = null;
+  imgBackgroundFile: any = null;
+  countryCode:string="";
+  copyLinkText:string="copy link"
 
   constructor(private dataServ: DataService, private PhoneCountriesAPI: PhoneCountriesAPIService,
     private formBuilder: FormBuilder, private toastr: ToastrService, private firestorage: AngularFireStorage) {
@@ -52,7 +54,7 @@ export class MylinksComponent {
           continue
         this.countries.push(data[i].idd.root + data[i].idd.suffixes[0])
       }
-      this.countries.sort()
+      this.countries.sort().reverse()
     })
 
     let USR = JSON.parse(localStorage.getItem("loginObject")!); // get user data 
@@ -67,6 +69,7 @@ export class MylinksComponent {
         this.currentUser
         this.profile.patchValue({
           Name: this.currentUser.Name,
+          bio: this.currentUser.bio,
           email: this.currentUser.email,
           userName: this.currentUser.userName,
           X: this.currentUser.X,
@@ -76,6 +79,7 @@ export class MylinksComponent {
           whatsapp: this.currentUser.whatsapp,
           tiktok: this.currentUser.tiktok,
           photoUrl: this.currentUser.photoUrl,
+          bgUrl: this.currentUser.bgUrl,
           location: this.currentUser.location,
           userId: this.currentUser.userId,
         })
@@ -163,7 +167,7 @@ export class MylinksComponent {
   async uploadPhoto() {
     this.uploading = "uploadingImage";
     if (this.imgFile) {
-      const path = `ecommerce/${new Date().getTime()}${this.imgFile.name}`; // we make name of file in firebase storage 
+      const path = `link/${new Date().getTime()}${this.imgFile.name}`; // we make name of file in firebase storage 
       const uploadTask = await this.firestorage.upload(path, this.imgFile)
       const url = await uploadTask.ref.getDownloadURL()
       this.profile.patchValue({
@@ -171,16 +175,21 @@ export class MylinksComponent {
       })
     }
     if (this.imgBackgroundFile) {
-      const path = `ecommerce/${new Date().getTime()}${this.imgBackgroundFile.name}`; // we make name of file in firebase storage 
+      const path = `link/${new Date().getTime()}${this.imgBackgroundFile.name}`; // we make name of file in firebase storage 
       const uploadTask = await this.firestorage.upload(path, this.imgBackgroundFile)
       const bgUrl = await uploadTask.ref.getDownloadURL()
       this.profile.patchValue({
         bgUrl: bgUrl
       })
-      this.uploading = "uploadedImage";
     }
-    this.submit()
+      this.uploading = "uploadedImage";
+      this.submit()
   }
 
+  copyLink(){
+    this.copyLinkText="copied";
+    setTimeout(()=>this.copyLinkText="copy link",2000);
+    navigator.clipboard.writeText(document.getElementById("link")?.getAttribute("href")!); // to copy text or html elements
+  }
  
 }
