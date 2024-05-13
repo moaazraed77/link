@@ -21,7 +21,7 @@ export class AppComponent {
           } else
             sessionStorage.setItem("reloadHome", "");
         }
-        if (events.url.endsWith("mylinks")) {
+        if (events.url.endsWith("mylinks")|| (!events.url.includes(events.url.split("/").find(ele =>ele=="home"||ele=="login"||ele=="sign-up"||ele=="profile")!))) {
           this.header_footer_view=false;
         }else{
           this.header_footer_view=true;
