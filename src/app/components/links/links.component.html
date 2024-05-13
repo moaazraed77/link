@@ -45,6 +45,8 @@
             <img [src]="currentUser.bgUrl" alt="" class="bg-img" *ngIf="currentUser.bgUrl">
             <!-- <img src="assets/logo.jpg" alt="" class="bg-img" *ngIf="!currentUser.bgUrl"> -->
             <img [src]="currentUser.photoUrl" alt="" class="profile">
+            <h6 class="text-capitalize text-center" *ngIf="currentUser.Name">{{currentUser.Name}}</h6>
+            <h6 class="text-capitalize text-center" *ngIf="currentUser.bio">{{currentUser.bio}}</h6>
             <div class="alert bg-success" *ngIf="currentUser.whatsapp"><i class="bi bi-whatsapp"></i> whatsapp</div>
             <div class="alert bg-warning" *ngIf="currentUser.snapchat"><i class="bi bi-snapchat"></i> snapchat</div>
             <div class="alert bg-danger" *ngIf="currentUser.instagram"><i class="bi bi-instagram"></i> instagram
