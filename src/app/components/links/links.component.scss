@@ -9,7 +9,11 @@
 
 @media screen and (max-width:700px) {
     .link-view-div{
-        width: 90%;
+        width: 90% !important;
+        margin-left: 5%;
+    }
+    .div-content{
+        width: 100%;
     }
     .profile{
         margin-bottom: 5px;

@@ -28,7 +28,7 @@ form{
     background-repeat: no-repeat;
 }
 /* ------------------------------------------------------------------------- */
-@import '/src/styles.scss'; /* to import sass variables */
+@import '/src/styles.scss'; 
 
 .card {
     background-repeat: no-repeat;
@@ -144,7 +144,7 @@ h4 {
     border-radius: 20px;
     border: 5px solid black;
     min-height: 425px;
-    width: 285px;
+    width: 310px;
     margin-top: 75px;
     height: fit-content;
 }
