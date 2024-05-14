@@ -1,4 +1,4 @@
-<div class="col-12">
+<div class="col-12 all-content">
     <div class="col-sm-1 sidebar">
         <img src="assets/logo.jpg" alt="" class="positon-absolute rounded w-100">
         <div class="text-center">
@@ -15,7 +15,17 @@
                 <small>analystic</small>
             </div>
         </div>
-        <img [src]="currentUser.photoUrl" alt="" class="profile position-bottom-abs">
+        <div class="dropdown profile position-bottom-abs">
+            <a class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <img [src]="currentUser.photoUrl" alt=""  class="profile">
+                <strong>profile</strong>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                <li><a class="dropdown-item" (click)="logout()">Sign out</a></li>
+            </ul>
+        </div>
+        <!-- <img [src]="currentUser.photoUrl" alt="" class="profile position-bottom-abs"> -->
     </div>
     <div class="col-sm-11 content">
         <div class="col-sm-6 p-3 pb-0">

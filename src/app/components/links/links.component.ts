@@ -6,7 +6,7 @@ import { DataService } from 'src/app/Modules/services/data.service';
 @Component({
   selector: 'app-links',
   templateUrl: './links.component.html',
-  styleUrls: ['./links.component.scss']
+  styleUrls: ['./links.component.scss', '../../Modules/css-styles/user-forms-style.css']
 })
 export class LinksComponent {
   
@@ -17,7 +17,6 @@ export class LinksComponent {
     activatedRoute.paramMap.subscribe(params =>[
       userNameFromURL=params.get("userName")?.toString()!
     ])
-    console.log(userNameFromURL)
     dataServ.getUserData().subscribe({
       next: (value) => {
         for (const key in value) {

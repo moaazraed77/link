@@ -12,7 +12,11 @@ import { AuthService } from 'src/app/Modules/services/auth.service';
 export class LoginComponent {
 
   constructor(private formBuilder: FormBuilder, private authServ: AuthService
-    , private toastr: ToastrService, private route: Router) { }
+    , private toastr: ToastrService, private route: Router) {
+    if (localStorage.getItem("loginObject")) {
+      this.route.navigate(["/mylinks"])
+    }
+  }
 
   loginData = this.formBuilder.group({
     email: ["", Validators.required],
@@ -35,8 +39,15 @@ export class LoginComponent {
       this.toastr.success("تم تسجيل الدخول بنجاح")
       this.route.navigate(["/mylinks"])
     }).catch(err => {
-      this.route.navigate(["/sign-up"])
-      this.toastr.error("يرجي انشاء الحساب الخاص بك ")
+      if (err.message.includes("invalid-login-credentials")) {
+        this.toastr.error("check your email or password")
+      } else if (err.message.includes("try again later")) {
+        this.toastr.error("many failed login attempts","try again later")
+      } else {
+        this.route.navigate(["/sign-up"])
+        this.toastr.error("يرجي انشاء الحساب الخاص بك ")
+      }
+      this.load = false
     });
   }
 

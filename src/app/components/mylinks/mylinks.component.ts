@@ -5,6 +5,7 @@ import { user } from 'src/app/Modules/interfaces/user.interface';
 import { DataService } from 'src/app/Modules/services/data.service';
 import { PhoneCountriesAPIService } from 'src/app/Modules/services/phone-countries-api.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage';  // write this special code for upload img 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mylinks',
@@ -46,7 +47,8 @@ export class MylinksComponent {
   copyLinkText:string="copy link"
 
   constructor(private dataServ: DataService, private PhoneCountriesAPI: PhoneCountriesAPIService,
-    private formBuilder: FormBuilder, private toastr: ToastrService, private firestorage: AngularFireStorage) {
+    private formBuilder: FormBuilder, private toastr: ToastrService,
+     private firestorage: AngularFireStorage, private route:Router) {
 
     PhoneCountriesAPI.getCountryData().subscribe(data => {
       for (let i = 0; i < data.length; i++) {
@@ -192,4 +194,8 @@ export class MylinksComponent {
     navigator.clipboard.writeText(document.getElementById("link")?.getAttribute("href")!); // to copy text or html elements
   }
  
+  logout(){
+    localStorage.removeItem("loginObject");
+    this.route.navigate(["/"])
+  }
 }

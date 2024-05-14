@@ -9,22 +9,25 @@ import { NavigationEnd, Router } from '@angular/router';
 export class AppComponent {
   title = 'links-project';
 
-  header_footer_view:boolean=true;
+  header_footer_view: boolean = true;
 
   constructor(private route: Router) {
     route.events.subscribe(events => {
       if (events instanceof NavigationEnd) {
+        let arr:string[] = events.url.split("/")
+        if (arr[arr.length-1] == "" ||arr[arr.length-1] == "home" || arr[arr.length-1] == "login" || arr[arr.length-1] == "sign-up" || arr[arr.length-1] == "profile") {
+          this.header_footer_view = true;
+        } else {
+          this.header_footer_view = false;
+        }
+
         if (events.url.endsWith("home")) {
           if (sessionStorage.getItem("reloadHome") != "homeReloaded") {
             location.reload()
             sessionStorage.setItem("reloadHome", "homeReloaded");
           } else
             sessionStorage.setItem("reloadHome", "");
-        }
-        if (events.url.endsWith("mylinks")|| (!events.url.includes(events.url.split("/").find(ele =>ele=="home"||ele=="login"||ele=="sign-up"||ele=="profile")!))) {
-          this.header_footer_view=false;
-        }else{
-          this.header_footer_view=true;
+          this.header_footer_view = true;
         }
       }
     })
