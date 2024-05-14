@@ -1,5 +1,4 @@
-
-.bg-view{
+.bg-view {
     top: 0px;
     left: 0px;
     height: 100px;
@@ -8,15 +7,29 @@
 }
 
 @media screen and (max-width:700px) {
-    .link-view-div{
-        width: 90% !important;
-        margin-left: 5%;
+    .link-view-div {
+        padding: 13px !important;
+        min-height: 100vh !important;
+        width: 100% !important;
+        margin-top: 0px !important;
+        border: none !important;
     }
-    .div-content{
+
+    .div-content {
         width: 100%;
     }
-    .profile{
+
+    .profile {
         margin-bottom: 5px;
+        height: 70px;
+        width: 70px;
+    }
+
+    .bg-view {
+        margin-top: -120px;
+    }
+
+    .alert {
+        padding: 7px 10px !important;
     }
 }
-
