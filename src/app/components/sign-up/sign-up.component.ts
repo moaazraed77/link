@@ -75,18 +75,16 @@ export class SignUpComponent {
               this.loginObject.token = token.token;
               this.loginObject.authTime = token.authTime;
             });
-            // save the local Storage data 
-            localStorage.setItem("loginObject", JSON.stringify(this.loginObject))
-
             //set user id
             this.loginObject.uid = user.user.uid;
-
+            // save the local Storage data 
+            localStorage.setItem("loginObject", JSON.stringify(this.loginObject))
             this.signUpData.patchValue({
               userId: user.user.uid
             })
             this.analytics.patchValue({
               uid: user.user.uid,
-              username:this.signUpData.value.userName
+              username: this.signUpData.value.userName
             })
 
             this.dataServ.createUserAnalytics(this.analytics.value)
