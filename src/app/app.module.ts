@@ -10,7 +10,6 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminModule } from './admin/admin.module';
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { ProfileComponent } from './components/profile/profile.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
@@ -37,7 +36,6 @@ import { CountriesCodesPipe } from './Modules/pipes/countries-codes.pipe';
     AdminComponent,
     LoginComponent,
     SignUpComponent,
-    ProfileComponent,
     LoaderComponent,
     LinksComponent,
     MylinksComponent,

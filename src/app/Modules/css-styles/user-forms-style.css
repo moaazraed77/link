@@ -149,7 +149,7 @@ h4 {
     height: fit-content;
 }
 
-.link-view-div a {
+.link-view-div #link {
     position: absolute;
     top: -35px;
     left: 10px;

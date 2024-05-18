@@ -15,19 +15,18 @@ export class AppComponent {
     route.events.subscribe(events => {
       if (events instanceof NavigationEnd) {
         let arr:string[] = events.url.split("/")
-        if (arr[arr.length-1] == "" ||arr[arr.length-1] == "home" || arr[arr.length-1] == "login" || arr[arr.length-1] == "sign-up" || arr[arr.length-1] == "profile") {
+        if (arr[arr.length-1] == "" ||arr[arr.length-1] == "home" || arr[arr.length-1] == "login" || arr[arr.length-1] == "sign-up") {
           this.header_footer_view = true;
         } else {
           this.header_footer_view = false;
         }
 
-        if (events.url.endsWith("home")) {
+        if (events.url.endsWith("home") || events.url.endsWith("")) {
           if (sessionStorage.getItem("reloadHome") != "homeReloaded") {
             location.reload()
             sessionStorage.setItem("reloadHome", "homeReloaded");
           } else
-            sessionStorage.setItem("reloadHome", "");
-          this.header_footer_view = true;
+            sessionStorage.removeItem("reloadHome");
         }
       }
     })

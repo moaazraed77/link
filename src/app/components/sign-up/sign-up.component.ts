@@ -18,10 +18,10 @@ export class SignUpComponent {
     private dataServ: DataService, private route: Router) { }
   // sign Up Data value for create user 
   signUpData = this.formBuilder.group({
-    email: ["", [Validators.required,Validators.email]],
+    email: ["", [Validators.required, Validators.email]],
     password: ["", Validators.required],
     userName: ["", Validators.required],
-    Name: ["",[Validators.required, Validators.minLength(3)]],
+    Name: ["", [Validators.required, Validators.minLength(3)]],
     bio: [""],
     X: [""],
     snapchat: [""],
@@ -35,8 +35,19 @@ export class SignUpComponent {
     userId: [""],
   })
 
-  load: boolean = false;
+  analytics = this.formBuilder.group({
+    uid: [""],
+    username: [""],
+    profile: [0],
+    facebook: [0],
+    instagram: [0],
+    whatsapp: [0],
+    x: [0],
+    snapchat: [0],
+    tiktok: [0],
+  })
 
+  load: boolean = false;
   loginObject: any = {};
 
   async signUp() {
@@ -60,18 +71,26 @@ export class SignUpComponent {
           // create user && check the user is signed up before or not
           this.authServ.signUp(this.signUpData.value).then(async user => {
             // add token as a practice
-            
-            // await user.user.getIdTokenResult(false).then(token => {
-            //   this.loginObject.token = token.token;
-            //   this.loginObject.authTime = token.authTime;
-            // });
-            // save user id
+            await user.user.getIdTokenResult(false).then(token => {
+              this.loginObject.token = token.token;
+              this.loginObject.authTime = token.authTime;
+            });
+            // save the local Storage data 
+            localStorage.setItem("loginObject", JSON.stringify(this.loginObject))
+
+            //set user id
             this.loginObject.uid = user.user.uid;
+
             this.signUpData.patchValue({
               userId: user.user.uid
             })
-            // save the local Storage data 
-            localStorage.setItem("loginObject", JSON.stringify(this.loginObject))
+            this.analytics.patchValue({
+              uid: user.user.uid,
+              username:this.signUpData.value.userName
+            })
+
+            this.dataServ.createUserAnalytics(this.analytics.value)
+
             this.dataServ.userCreateData(this.signUpData.value).subscribe(data => {
               this.route.navigate(["/mylinks"]);
               this.toastr.success("تم انشاء الحساب الخاص بك بنجاح")
@@ -89,7 +108,7 @@ export class SignUpComponent {
     });
   }
 
-  get signUpControls(){
+  get signUpControls() {
     return this.signUpData.controls;
   }
 

@@ -6,6 +6,7 @@ import { DataService } from 'src/app/Modules/services/data.service';
 import { PhoneCountriesAPIService } from 'src/app/Modules/services/phone-countries-api.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage';  // write this special code for upload img 
 import { Router } from '@angular/router';
+import { analytics } from 'src/app/Modules/interfaces/analytics.interface';
 
 @Component({
   selector: 'app-mylinks',
@@ -18,6 +19,18 @@ export class MylinksComponent {
   load: boolean = false;
   showBtn: string = "";
   links: string[] = []
+  countries: any[] = [];
+  arr: any[] = [];
+  partView: string = "home";
+  uploading: string = ""
+  photoUrl: string = ""
+  bgUrl: string = ""
+  imgFile: any = null;
+  imgBackgroundFile: any = null;
+  countryCode:string="";
+  copyLinkText:string="copy link";
+  userAnalytics: analytics = {} as analytics;
+
   profile = this.formBuilder.group({
     email: [""],
     password: [""],
@@ -35,21 +48,11 @@ export class MylinksComponent {
     location: [""],
     userId: [""],
   })
-  countries: any[] = [];
-  arr: any[] = [];
-  partView: string = "home";
-  uploading: string = ""
-  photoUrl: string = ""
-  bgUrl: string = ""
-  imgFile: any = null;
-  imgBackgroundFile: any = null;
-  countryCode:string="";
-  copyLinkText:string="copy link"
 
   constructor(private dataServ: DataService, private PhoneCountriesAPI: PhoneCountriesAPIService,
     private formBuilder: FormBuilder, private toastr: ToastrService,
      private firestorage: AngularFireStorage, private route:Router) {
-
+      // get Api for countries code
     PhoneCountriesAPI.getCountryData().subscribe(data => {
       for (let i = 0; i < data.length; i++) {
         if (i == 44 || i == 63)
@@ -58,17 +61,29 @@ export class MylinksComponent {
       }
       this.countries.sort().reverse()
     })
-
+      // get User data
     let USR = JSON.parse(localStorage.getItem("loginObject")!); // get user data 
     dataServ.getUserData().subscribe({
       next: (value) => {
         for (const key in value) {
           this.currentUser = (value[key].userId == USR.uid) ? value[key] : this.currentUser;
         }
+        if(!this.currentUser.photoUrl)
+          this.currentUser.photoUrl="assets/man.png"
       },
       complete: () => {
         this.load = false;
-        this.currentUser
+        dataServ.getUserAnalytics().subscribe({
+          next: (data) => {
+            for (const key in data) {
+              if (data[key].username == this.currentUser.userName) {
+                this.userAnalytics = data[key];
+                console.log(this.userAnalytics);
+                break;
+              }
+            }
+          },
+        })
         this.profile.patchValue({
           Name: this.currentUser.Name,
           bio: this.currentUser.bio,
@@ -102,7 +117,7 @@ export class MylinksComponent {
   }
 
   submitWhatshapp(){
-    let whatsappNumber= this.countryCode +this.profile.value.whatsapp ;
+    let whatsappNumber= this.countryCode +this.profile.value.whatsapp ;  // set phone with country code
     this.profile.patchValue({
       whatsapp: whatsappNumber
     })
@@ -146,8 +161,7 @@ export class MylinksComponent {
   }
 
 
-
-  // for upload image 
+  // for promo upload image 
   uploadPromo(event: any) {
     let loader = new FileReader();
     this.imgFile = event.target.files[0]
@@ -157,6 +171,7 @@ export class MylinksComponent {
     }
   }
 
+  // for promo upload background image 
   uploadBackgroundPromo(event: any) {
     let loader = new FileReader();
     this.imgBackgroundFile = event.target.files[0]
@@ -166,6 +181,7 @@ export class MylinksComponent {
     }
   }
 
+  // upload on server
   async uploadPhoto() {
     this.uploading = "uploadingImage";
     if (this.imgFile) {
@@ -196,6 +212,6 @@ export class MylinksComponent {
  
   logout(){
     localStorage.removeItem("loginObject");
-    this.route.navigate(["/"])
+    this.route.navigate(["/home"])
   }
 }

@@ -1,59 +1,18 @@
-<!-- <div class="container d-flex justify-content-center align-items-center">
-    <div class="col-sm-5 pt-4">
-        <div class="alert alert-success d-flex justify-content-center align-items-center" *ngIf="currentUser.userName">
-            <a [href]="currentUser.whatsapp" target="_blank">
-                <i class="bi bi-whatsapp"></i> what'sapp
-            </a>
-        </div>
-        <div class="alert alert-danger d-flex justify-content-center align-items-center"  *ngIf="currentUser.instagram">
-            <a [href]="currentUser.instagram" target="_blank">
-                <i class="bi bi-instagram"></i>instagram
-            </a>
-        </div>
-        <div class="alert alert-dark d-flex justify-content-center align-items-center"  *ngIf="currentUser.tiktok">
-            <a [href]="currentUser.tiktok" target="_blank">
-                <i class="bi bi-tiktok"></i> tiktok
-            </a>
-        </div>
-        <div class="alert alert-warning d-flex justify-content-center align-items-center"  *ngIf="currentUser.snapchat">
-            <a [href]="currentUser.snapchat" target="_blank">
-                <i class="bi bi-snapchat"></i> snapchat
-            </a>
-        </div>
-        <div class="alert alert-dark d-flex justify-content-center align-items-center"  *ngIf="currentUser.X">
-            <a [href]="currentUser.X" target="_blank">
-                <i class="bi bi-twitter-x"></i>
-            </a>
-        </div>
-        <div class="alert alert-primary d-flex justify-content-center align-items-center"  *ngIf="currentUser.facebook">
-            <a [href]="currentUser.facebook" target="_blank">
-                <i class="bi bi-facebook"></i>facebook
-            </a>
-        </div>
-        <div class="alert alert-primary d-flex justify-content-center align-items-center"  *ngIf="currentUser.location">
-            <a [href]="currentUser.location" target="_blank">
-                <i class="bi bi-location"></i>Location
-            </a>
-        </div>
-    </div>
-</div> -->
 
  <!-- mobile left view -->
  <div class="col-12 bg-light d-flex justify-content-center" style="min-height: 100vh;">
     <div class="text-center div-content">
         <div class="link-view-div text-center">
             <img [src]="currentUser.bgUrl" alt="" class="bg-img" *ngIf="currentUser.bgUrl">
-            <!-- <img src="assets/logo.jpg" alt="" class="bg-img" *ngIf="!currentUser.bgUrl"> -->
             <img [src]="currentUser.photoUrl" alt="" class="profile">
             <h6 class="text-capitalize text-center" *ngIf="currentUser.Name">{{currentUser.Name}}</h6>
             <h6 class="text-capitalize text-center" *ngIf="currentUser.bio">{{currentUser.bio}}</h6>
-            <div class="alert bg-success" *ngIf="currentUser.whatsapp"><i class="bi bi-whatsapp"></i> whatsapp</div>
-            <div class="alert bg-warning" *ngIf="currentUser.snapchat"><i class="bi bi-snapchat"></i> snapchat</div>
-            <div class="alert bg-danger" *ngIf="currentUser.instagram"><i class="bi bi-instagram"></i> instagram
-            </div>
-            <div class="alert bg-dark" *ngIf="currentUser.tiktok"><i class="bi bi-tiktok"></i> tiktok</div>
-            <div class="alert bg-primary" *ngIf="currentUser.facebook"><i class="bi bi-facebook"></i> facebook</div>
-            <div class="alert bg-dark" *ngIf="currentUser.X"><i class="bi bi-twitter-x"></i> X</div>
+            <a href="https://wa.me/{{currentUser.whatsapp}}" target="_blank" class="alert bg-success" *ngIf="currentUser.whatsapp" (click)="update('whatsapp')"><i class="bi bi-whatsapp"></i> whatsapp</a>
+            <a [href]="currentUser.snapchat" target="_blank" class="alert bg-warning" *ngIf="currentUser.snapchat" (click)="update('snapchat')"><i class="bi bi-snapchat"></i> snapchat</a>
+            <a [href]="currentUser.instagram" target="_blank" class="alert bg-danger" *ngIf="currentUser.instagram" (click)="update('instagram')"><i class="bi bi-instagram"></i> instagram</a>
+            <a [href]="currentUser.tiktok" target="_blank" class="alert bg-dark" *ngIf="currentUser.tiktok" (click)="update('tiktok')"><i class="bi bi-tiktok"></i> tiktok</a>
+            <a [href]="currentUser.facebook" target="_blank" class="alert bg-primary" *ngIf="currentUser.facebook" (click)="update('facebook')"><i class="bi bi-facebook"></i> facebook</a>
+            <a [href]="currentUser.X" target="_blank" class="alert bg-dark" *ngIf="currentUser.X" (click)="update('x')"><i class="bi bi-twitter-x"></i> X</a>
         </div>
         <img src="assets/logo.jpg" alt="" class="bg-view">
     </div>

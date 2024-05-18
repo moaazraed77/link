@@ -10,9 +10,9 @@
                 <i class="bi bi-emoji-smile"></i>
                 <small>appearence</small>
             </div>
-            <div>
+            <div (click)="partView='Analytics'">
                 <i class="bi bi-bar-chart"></i>
-                <small>analystic</small>
+                <small>Analytics</small>
             </div>
         </div>
         <div class="dropdown profile position-bottom-abs">
@@ -32,7 +32,7 @@
             <!-- collapse part view -->
             <div class="text-center" *ngIf="partView=='home'">
                 <h1>Hello , {{currentUser.Name}}</h1>
-                <h6 class="text-start">l'ts create your social link</h6>
+                <h6 class="text-start">let's create your social link</h6>
                 <button class="btn btn-dark m-2 btnsAdd" type="button" data-bs-toggle="collapse"
                     data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                     <i class="bi bi-plus-circle"></i> Add Link</button>
@@ -235,6 +235,20 @@
                         <button class="btn btn-primary"> save</button>
                     </div>
                 </form>
+            </div>
+            <!-- Analytics -->
+            <div class="text-start" *ngIf="partView=='Analytics'">
+                <h1>Analytics</h1>
+                <p class="text-secondary">Get a closer look on your links activity </p>
+                <div class="analytics">
+                    <h5>profile : <span>{{userAnalytics.profile}}</span></h5>
+                    <h5>snapchat : <span>{{userAnalytics.snapchat}}</span></h5>
+                    <h5>instagram : <span>{{userAnalytics.instagram}}</span></h5>
+                    <h5>whatsapp : <span>{{userAnalytics.whatsapp}}</span></h5>
+                    <h5>tiktok : <span>{{userAnalytics.tiktok}}</span></h5>
+                    <h5>x : <span>{{userAnalytics.x}}</span></h5>
+                    <h5>facebook : <span>{{userAnalytics.facebook}}</span></h5>
+                </div>
             </div>
         </div>
         <!-- mobile left view -->
