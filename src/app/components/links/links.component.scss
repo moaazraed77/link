@@ -6,6 +6,10 @@
     border-radius: 50%;
 }
 
+a{
+    text-decoration: none;
+}
+
 @media screen and (max-width:700px) {
     .link-view-div {
         padding: 13px !important;
