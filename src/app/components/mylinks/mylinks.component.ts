@@ -123,7 +123,18 @@ export class MylinksComponent {
     })
   }
 
-
+  getCodes(){
+    let codes:string[]=[]
+    this.PhoneCountriesAPI.getCountryData().subscribe(data => {
+      for (let i = 0; i < data.length; i++) {
+        if (i == 44 || i == 63)
+          continue
+        codes.push(data[i].idd.root + data[i].idd.suffixes[0])
+      }
+      this.countries=codes.sort().reverse()
+    })
+  }
+  
   deleteLink(item: string) {
     if (item == "whatsapp") {
       this.profile.patchValue({
