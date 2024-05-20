@@ -12,7 +12,7 @@ const routes: Routes = [
   {path:"home",component:HomeComponent},
   {path:"login",component:LoginComponent},
   {path:"sign-up",component:SignUpComponent},
-  {path:"mylinks",component:MylinksComponent,canActivate:[profileGuard]},
+  {path:"mylinks",loadChildren:()=> import("./components/mylinks/mylinks.module").then(m=> m.MylinksModule)},
   {path:":userName",component:LinksComponent},
 ];
 

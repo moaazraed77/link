@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -25,6 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LinksComponent } from './components/links/links.component';
 import { MylinksComponent } from './components/mylinks/mylinks.component';
 import { CountriesCodesPipe } from './Modules/pipes/countries-codes.pipe';
+import { MylinksModule } from './components/mylinks/mylinks.module';
 
 
 @NgModule({
@@ -54,6 +55,13 @@ import { CountriesCodesPipe } from './Modules/pipes/countries-codes.pipe';
     FormsModule,
     BrowserAnimationsModule,    // required animations module
     ToastrModule.forRoot(),    // ToastrModule added
+    MylinksModule
+  ],
+  exports:[
+    LoaderComponent
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
   ],
   providers: [
      // write this special code for upload img 

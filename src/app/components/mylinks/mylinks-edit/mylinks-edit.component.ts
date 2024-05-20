@@ -1,19 +1,21 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { analytics } from 'src/app/Modules/interfaces/analytics.interface';
 import { user } from 'src/app/Modules/interfaces/user.interface';
 import { DataService } from 'src/app/Modules/services/data.service';
 import { PhoneCountriesAPIService } from 'src/app/Modules/services/phone-countries-api.service';
-import { AngularFireStorage } from '@angular/fire/compat/storage';  // write this special code for upload img 
-import { Router } from '@angular/router';
-import { analytics } from 'src/app/Modules/interfaces/analytics.interface';
 
 @Component({
-  selector: 'app-mylinks',
-  templateUrl: './mylinks.component.html',
-  styleUrls: ['./mylinks.component.scss', '../../Modules/css-styles/user-forms-style.css']
+  selector: 'app-mylinks-edit',
+  templateUrl: './mylinks-edit.component.html',
+  styleUrls: ['./mylinks-edit.component.scss']
 })
-export class MylinksComponent {
+export class MylinksEditComponent implements OnChanges{
+  
+  @Input() partViewSent:string="home"
 
   currentUser: user = {} as user;
   load: boolean = false;
@@ -27,15 +29,15 @@ export class MylinksComponent {
   bgUrl: string = ""
   imgFile: any = null;
   imgBackgroundFile: any = null;
-  countryCode: string = "";
-  copyLinkText: string = "copy link";
+  countryCode:string="";
+  copyLinkText:string="copy link";
   userAnalytics: analytics = {} as analytics;
 
   profile = this.formBuilder.group({
     email: [""],
     password: [""],
     Name: [""],
-    bio: [""],
+    bio:[""],
     userName: [""],
     X: [""],
     snapchat: [""],
@@ -51,21 +53,19 @@ export class MylinksComponent {
 
   constructor(private dataServ: DataService, private PhoneCountriesAPI: PhoneCountriesAPIService,
     private formBuilder: FormBuilder, private toastr: ToastrService,
-    private firestorage: AngularFireStorage, private route: Router) {
-    // get countries code
-    this.countries = PhoneCountriesAPI.getCountriesArray()
-    // get User data
+     private firestorage: AngularFireStorage, private route:Router) {
+      // get countries code
+      this.countries=PhoneCountriesAPI.getCountriesArray()
+      // get User data
     let USR = JSON.parse(localStorage.getItem("loginObject")!); // get user data 
     dataServ.getUserData().subscribe({
       next: (value) => {
         for (const key in value) {
-          if (value[key].userId == USR.uid) {
-            this.currentUser = value[key];
-            break;
-          };
+          this.currentUser = (value[key].userId == USR.uid) ? value[key] : this.currentUser;
+          break
         }
-        if (!this.currentUser.photoUrl)
-          this.currentUser.photoUrl = "assets/man.png"
+        if(!this.currentUser.photoUrl)
+          this.currentUser.photoUrl="assets/man.png"
       },
       complete: () => {
         this.load = false;
@@ -100,6 +100,11 @@ export class MylinksComponent {
     })
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    this.partView=this.partViewSent;
+    console.log(this.partViewSent)
+  }
+
   submit() {
     this.dataServ.getUserData().subscribe(data => {
       for (const key in data) {
@@ -112,8 +117,8 @@ export class MylinksComponent {
     })
   }
 
-  submitWhatshapp() {
-    let whatsappNumber = this.countryCode + this.profile.value.whatsapp;  // set phone with country code
+  submitWhatshapp(){
+    let whatsappNumber= this.countryCode +this.profile.value.whatsapp ;  // set phone with country code
     this.profile.patchValue({
       whatsapp: whatsappNumber
     })
@@ -196,17 +201,17 @@ export class MylinksComponent {
         bgUrl: bgUrl
       })
     }
-    this.uploading = "uploadedImage";
-    this.submit()
+      this.uploading = "uploadedImage";
+      this.submit()
   }
 
-  copyLink() {
-    this.copyLinkText = "copied";
-    setTimeout(() => this.copyLinkText = "copy link", 2000);
+  copyLink(){
+    this.copyLinkText="copied";
+    setTimeout(()=>this.copyLinkText="copy link",2000);
     navigator.clipboard.writeText(document.getElementById("link")?.getAttribute("href")!); // to copy text or html elements
   }
-
-  logout() {
+ 
+  logout(){
     localStorage.removeItem("loginObject");
     this.route.navigate(["/home"])
   }
