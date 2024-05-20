@@ -31,6 +31,7 @@ export class MylinksComponent {
   copyLinkText: string = "copy link";
   userAnalytics: analytics = {} as analytics;
   linkSubmitClick:boolean=false;
+  getCodesClick:boolean=false;
 
   profile = this.formBuilder.group({
     email: [""],
@@ -55,7 +56,7 @@ export class MylinksComponent {
     private formBuilder: FormBuilder, private toastr: ToastrService,
     private firestorage: AngularFireStorage, private route: Router) {
     // get countries code
-    this.getCodes()
+    this.countries=PhoneCountriesAPI.arabCountryCodes;
     // get User data
     let USR = JSON.parse(localStorage.getItem("loginObject")!); // get local user data 
     // fitch about user
@@ -116,18 +117,6 @@ export class MylinksComponent {
     })
   }
 
-  getCodes(){
-    let codes:string[]=[]
-    this.PhoneCountriesAPI.getCountryData().subscribe(data => {
-      for (let i = 0; i < data.length; i++) {
-        if (i == 44 || i == 63)
-          continue
-        codes.push(data[i].idd.root + data[i].idd.suffixes[0])
-      }
-      this.countries=codes.sort().reverse()
-    })
-  }
-  
   deleteLink(item: string) {
     if (item == "whatsapp") {
       this.profile.patchValue({

@@ -43,9 +43,8 @@
                                 <button type="button" class="btn-close" aria-label="Close" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWhatsapp" aria-expanded="false" aria-controls="collapseWhatsapp"></button>
                                 <h6 class="text-dark text-capitalize">Add your whatsapp </h6>
                                 <div class="form-group whatsapp-group">
-                                    <select class="form-select countryCode" name="countryCode" id="countryCode" (click)="getCodes()" formControlName="countryCode">
-                                        <option *ngIf="!countries.length"> loading...</option>
-                                        <option [value]="country" *ngFor="let country of countries; let i = index"> {{country}}</option>
+                                    <select class="form-select countryCode" name="countryCode" id="countryCode" formControlName="countryCode">
+                                        <option [value]="country.code" *ngFor="let country of countries; let i = index"> {{country.code}}</option>
                                     </select>
                                     <input type="url" class="form-control whatsapp-input" placeholder="whatsapp-number" formControlName="whatsapp">
                                 </div>
