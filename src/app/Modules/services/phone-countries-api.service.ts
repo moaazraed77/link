@@ -15,11 +15,11 @@ export class PhoneCountriesAPIService {
   constructor(private http: HttpClient) { }
 
   arabCountryCodes:any = [
+    { country: "الكويت", code: "+965" },
     { country: "السعودية", code: "+966" },
     { country: "الإمارات العربية المتحدة", code: "+971" },
     { country: "مصر", code: "+20" },
     { country: "العراق", code: "+964" },
-    { country: "الكويت", code: "+965" },
     { country: "البحرين", code: "+973" },
     { country: "عمان", code: "+968" },
     { country: "قطر", code: "+974" },
