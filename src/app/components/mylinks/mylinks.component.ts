@@ -55,14 +55,7 @@ export class MylinksComponent {
     private formBuilder: FormBuilder, private toastr: ToastrService,
     private firestorage: AngularFireStorage, private route: Router) {
     // get countries code
-    PhoneCountriesAPI.getCountryData().subscribe(data => {
-      for (let i = 0; i < data.length; i++) {
-        if (i == 44 || i == 63)
-          continue
-        this.countries.push(data[i].idd.root + data[i].idd.suffixes[0])
-      }
-      this.countries.sort().reverse()
-    })
+    this.getCodes()
     // get User data
     let USR = JSON.parse(localStorage.getItem("loginObject")!); // get local user data 
     // fitch about user
