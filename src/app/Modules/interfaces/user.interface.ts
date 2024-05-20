@@ -8,6 +8,7 @@ export interface user{
     snapchat:string,
     facebook:string,
     instagram:string,
+    countryCode:string,
     whatsapp:string,
     tiktok:string,
     location: string,

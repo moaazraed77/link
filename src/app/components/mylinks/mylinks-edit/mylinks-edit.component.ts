@@ -55,7 +55,7 @@ export class MylinksEditComponent implements OnChanges{
     private formBuilder: FormBuilder, private toastr: ToastrService,
      private firestorage: AngularFireStorage, private route:Router) {
       // get countries code
-      this.countries=PhoneCountriesAPI.getCountriesArray()
+      // this.countries=PhoneCountriesAPI.getCountriesArray()
       // get User data
     let USR = JSON.parse(localStorage.getItem("loginObject")!); // get user data 
     dataServ.getUserData().subscribe({

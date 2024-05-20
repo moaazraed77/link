@@ -18,15 +18,15 @@ export class PhoneCountriesAPIService {
     return this.http.get<any>(this.apiUrl);
   }
 
-  getCountriesArray(){
-    this.getCountryData().subscribe(data => {
-      for (let i = 0; i < data.length; i++) {
-        if (i == 44 || i == 63)
-          continue
-        this.countries.push(data[i].idd.root + data[i].idd.suffixes[0])
-      }
-      this.countries.sort().reverse()
-    })
-    return this.countries
-  }
+  // getCountriesArray(){
+  //   this.getCountryData().subscribe(data => {
+  //     for (let i = 0; i < data.length; i++) {
+  //       if (i == 44 || i == 63)
+  //         continue
+  //       this.countries.push(data[i].idd.root + data[i].idd.suffixes[0])
+  //     }
+  //     this.countries.sort().reverse()
+  //   })
+  //   return this.countries
+  // }
 }

@@ -7,7 +7,7 @@
             <img [src]="currentUser.photoUrl" alt="" class="profile">
             <h6 class="text-capitalize text-center" *ngIf="currentUser.Name">{{currentUser.Name}}</h6>
             <h6 class="text-capitalize text-center" *ngIf="currentUser.bio">{{currentUser.bio}}</h6>
-            <a href="https://wa.me/{{currentUser.whatsapp}}" target="_blank" class="alert bg-success" *ngIf="currentUser.whatsapp" (click)="update('whatsapp')"><i class="bi bi-whatsapp"></i> whatsapp</a>
+            <a href="https://wa.me/{{currentUser.countryCode}}{{currentUser.whatsapp}}" target="_blank" class="alert bg-success" *ngIf="currentUser.whatsapp" (click)="update('whatsapp')"><i class="bi bi-whatsapp"></i> whatsapp</a>
             <a [href]="currentUser.snapchat" target="_blank" class="alert bg-warning" *ngIf="currentUser.snapchat" (click)="update('snapchat')"><i class="bi bi-snapchat"></i> snapchat</a>
             <a [href]="currentUser.instagram" target="_blank" class="alert bg-danger" *ngIf="currentUser.instagram" (click)="update('instagram')"><i class="bi bi-instagram"></i> instagram</a>
             <a [href]="currentUser.tiktok" target="_blank" class="alert bg-dark" *ngIf="currentUser.tiktok" (click)="update('tiktok')"><i class="bi bi-tiktok"></i> tiktok</a>

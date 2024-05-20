@@ -27,6 +27,7 @@ export class SignUpComponent {
     snapchat: [""],
     facebook: [""],
     instagram: [""],
+    countryCode: [""],
     whatsapp: [""],
     tiktok: [""],
     photoUrl: [""],

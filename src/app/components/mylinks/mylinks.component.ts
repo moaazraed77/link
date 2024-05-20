@@ -30,6 +30,7 @@ export class MylinksComponent {
   countryCode: string = "";
   copyLinkText: string = "copy link";
   userAnalytics: analytics = {} as analytics;
+  linkSubmitClick:boolean=false;
 
   profile = this.formBuilder.group({
     email: [""],
@@ -41,6 +42,7 @@ export class MylinksComponent {
     snapchat: [""],
     facebook: [""],
     instagram: [""],
+    countryCode:[""],
     whatsapp: [""],
     tiktok: [""],
     photoUrl: [""],
@@ -53,9 +55,17 @@ export class MylinksComponent {
     private formBuilder: FormBuilder, private toastr: ToastrService,
     private firestorage: AngularFireStorage, private route: Router) {
     // get countries code
-    this.countries = PhoneCountriesAPI.getCountriesArray()
+    PhoneCountriesAPI.getCountryData().subscribe(data => {
+      for (let i = 0; i < data.length; i++) {
+        if (i == 44 || i == 63)
+          continue
+        this.countries.push(data[i].idd.root + data[i].idd.suffixes[0])
+      }
+      this.countries.sort().reverse()
+    })
     // get User data
-    let USR = JSON.parse(localStorage.getItem("loginObject")!); // get user data 
+    let USR = JSON.parse(localStorage.getItem("loginObject")!); // get local user data 
+    // fitch about user
     dataServ.getUserData().subscribe({
       next: (value) => {
         for (const key in value) {
@@ -74,7 +84,6 @@ export class MylinksComponent {
             for (const key in data) {
               if (data[key].username == this.currentUser.userName) {
                 this.userAnalytics = data[key];
-                console.log(this.userAnalytics);
                 break;
               }
             }
@@ -89,6 +98,7 @@ export class MylinksComponent {
           snapchat: this.currentUser.snapchat,
           facebook: this.currentUser.facebook,
           instagram: this.currentUser.instagram,
+          countryCode: this.currentUser.countryCode,
           whatsapp: this.currentUser.whatsapp,
           tiktok: this.currentUser.tiktok,
           photoUrl: this.currentUser.photoUrl,
@@ -101,6 +111,7 @@ export class MylinksComponent {
   }
 
   submit() {
+    this.linkSubmitClick=true;
     this.dataServ.getUserData().subscribe(data => {
       for (const key in data) {
         if (data[key].userId == this.currentUser.userId) {
@@ -110,14 +121,6 @@ export class MylinksComponent {
         }
       }
     })
-  }
-
-  submitWhatshapp() {
-    let whatsappNumber = this.countryCode + this.profile.value.whatsapp;  // set phone with country code
-    this.profile.patchValue({
-      whatsapp: whatsappNumber
-    })
-    this.submit()
   }
 
 

@@ -40,7 +40,6 @@ export class LinksComponent {
         for (const key in value) {
           if (value[key].userName == userNameFromURL) {
             this.currentUser = value[key];
-            console.log(this.currentUser);
             break;
           }
         }

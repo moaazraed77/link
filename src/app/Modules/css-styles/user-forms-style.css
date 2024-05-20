@@ -241,7 +241,9 @@ input.snapchat-input::placeholder {
 .collapse .btn-dark {
     margin-top: 10px;
 }
-
+.the-links-choosed{
+    padding: 0px 20px;
+}
 .choose-link {
     background-color: antiquewhite;
     border-radius: 15px;
@@ -292,6 +294,7 @@ select.countryCode {
     .all-content{
         overflow: hidden;
     }
+
     .sidebar {
         height: fit-content;
         padding-top: 3px;
@@ -329,5 +332,10 @@ select.countryCode {
         width: 75px !important;
         left: 0px;
     }
-
+    .the-links-choosed {
+        padding: 0px;
+    }
+    form.p-5{
+        padding: 0px !important;
+    }
 }
