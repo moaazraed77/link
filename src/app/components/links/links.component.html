@@ -1,6 +1,6 @@
 
  <!-- mobile left view -->
- <div class="col-12 text-center d-flex justify-content-center align-items-center" style="height: 100vh;" *ngIf="!currentUser.active">
+ <div class="col-12 text-center d-flex justify-content-center align-items-center" style="height: 100vh;" *ngIf="currentUser.active === false">
     <div>
         <h1 class="text-info"> This account is disabled</h1> 
         <h5 class="text-info"> <a class="text-decoration-underline" routerLink="/home">back to home</a></h5>
