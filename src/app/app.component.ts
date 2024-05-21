@@ -15,7 +15,7 @@ export class AppComponent {
     route.events.subscribe(events => {
       if (events instanceof NavigationEnd) {
         let arr:string[] = events.url.split("/")
-        if (arr[arr.length-1] == "" ||arr[arr.length-1] == "home" || arr[arr.length-1] == "login" || arr[arr.length-1] == "sign-up") {
+        if (arr[arr.length-1] == "" ||arr[arr.length-1] == "home" ||arr[arr.length-1] == "ads" || arr[arr.length-1] == "login" || arr[arr.length-1] == "sign-up") {
           this.header_footer_view = true;
         } else {
           this.header_footer_view = false;

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { HomeLinksRoutingModule } from './home-links-routing.module';
 import { HomeLinksComponent } from './home-links.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { HomeLinksComponent } from './home-links.component';
   ],
   imports: [
     CommonModule,
-    HomeLinksRoutingModule
+    HomeLinksRoutingModule,
+    NgxPaginationModule
   ]
 })
 export class HomeLinksModule { }

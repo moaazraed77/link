@@ -4,7 +4,7 @@ import { HomeLinksComponent } from './home-links/home-links.component';
 import { AdminComponent } from './admin.component';
 
 const routes: Routes = [
-  {path:"admin", component:AdminComponent,children:[
+  {path:"", component:AdminComponent,children:[
     {path:"home-links",loadChildren:()=> import("./home-links/home-links.module").then(m=>m.HomeLinksModule)}
   ]}
 ];

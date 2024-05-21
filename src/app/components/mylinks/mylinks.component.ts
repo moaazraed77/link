@@ -50,6 +50,7 @@ export class MylinksComponent {
     bgUrl: [""],
     location: [""],
     userId: [""],
+    active: [true],
   })
 
   constructor(private dataServ: DataService, private PhoneCountriesAPI: PhoneCountriesAPIService,
@@ -99,6 +100,7 @@ export class MylinksComponent {
           bgUrl: this.currentUser.bgUrl,
           location: this.currentUser.location,
           userId: this.currentUser.userId,
+          active: this.currentUser.active,
         })
       }
     })

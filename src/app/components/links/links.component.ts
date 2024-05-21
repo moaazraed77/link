@@ -30,7 +30,8 @@ export class LinksComponent {
     tiktok: [0],
   })
 
-  constructor(private dataServ: DataService, private activatedRoute: ActivatedRoute, private formBuilder: FormBuilder) {
+  constructor(private dataServ: DataService, private activatedRoute: ActivatedRoute,
+     private formBuilder: FormBuilder, private route:Router) {
     let userNameFromURL: string = "";
     activatedRoute.paramMap.subscribe(params => [
       userNameFromURL = params.get("userName")?.toString()!

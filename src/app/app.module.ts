@@ -55,7 +55,7 @@ import { MylinksModule } from './components/mylinks/mylinks.module';
     FormsModule,
     BrowserAnimationsModule,    // required animations module
     ToastrModule.forRoot(),    // ToastrModule added
-    MylinksModule
+    MylinksModule,
   ],
   exports:[
     LoaderComponent

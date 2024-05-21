@@ -1,1 +1,41 @@
-hello
+<table class="table table-strip text-center">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">email</th>
+        <th scope="col">active</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let  item of Users | paginate:{itemsPerPage:pageSize,currentPage:currentPage};let i=index">
+        <th scope="row">{{i+1}}</th>
+        <td>{{item.email}}</td>
+        <td [ngClass]="{'text-info':item.active,'text-danger':!item.active}">{{item.active}}</td>
+        <td class="text-info fs-4" (click)="show(item)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+          <i class="bi bi-eyeglasses"></i>
+        </td>
+      </tr>
+  </table>
+
+  <!-- <app-loader></app-loader> -->
+  <pagination-controls (pageChange)="currentPage=$event"></pagination-controls>
+
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <h6 class="text-light text-center text-capitalize p-3" [ngClass]="{'bg-primary':userDetails.active,'bg-danger':!userDetails.active}">Active :  <span>{{userDetails.active}}</span></h6>
+      <h6 class="text-info text-capitalize">Name :  <span class="text-dark">{{userDetails.Name}}</span></h6>
+      <h6 class="text-info text-capitalize">email :  <span class="text-dark">{{userDetails.email}}</span></h6>
+      <h6 class="text-info text-capitalize">bio :  <span class="text-dark">{{userDetails.bio}}</span></h6>
+      <h6 class="text-info text-capitalize">userName :  <span class="text-dark">{{userDetails.userName}}</span></h6>
+      <h6 class="text-info text-capitalize">userId :  <span class="text-dark">{{userDetails.userId}}</span></h6>
+      <div class="text-center">
+        <div class="btn btn-danger m-2" (click)="stop(userDetails)">stop</div>
+        <div class="btn btn-primary m-2" (click)="activate(userDetails)">active</div>
+      </div>
+    </div>
+  </div>

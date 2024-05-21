@@ -34,6 +34,7 @@ export class SignUpComponent {
     bgUrl: [""],
     location: [""],
     userId: [""],
+    active: [true],
   })
 
   analytics = this.formBuilder.group({

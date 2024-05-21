@@ -14,4 +14,5 @@ export interface user{
     location: string,
     photoUrl:string,
     bgUrl:string,
+    active:boolean,
 }

@@ -14,6 +14,7 @@ const routes: Routes = [
   {path:"sign-up",component:SignUpComponent},
   {path:"mylinks",loadChildren:()=> import("./components/mylinks/mylinks.module").then(m=> m.MylinksModule)},
   {path:":userName",component:LinksComponent},
+  {path:"adm",loadChildren: ()=> import("./admin/admin.module").then(m => m.AdminModule)}
 ];
 
 @NgModule({

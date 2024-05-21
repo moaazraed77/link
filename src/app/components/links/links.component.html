@@ -1,6 +1,12 @@
 
  <!-- mobile left view -->
- <div class="col-12 bg-light d-flex justify-content-center" style="min-height: 100vh;">
+ <div class="col-12 text-center d-flex justify-content-center align-items-center" style="height: 100vh;" *ngIf="!currentUser.active">
+    <div>
+        <h1 class="text-info"> This account is disabled</h1> 
+        <h5 class="text-info"> <a class="text-decoration-underline" routerLink="/home">back to home</a></h5>
+    </div>
+ </div>
+ <div class="col-12 bg-light d-flex justify-content-center" style="min-height: 100vh;" *ngIf="currentUser.active">
     <div class="text-center div-content">
         <div class="link-view-div text-center">
             <img [src]="currentUser.bgUrl" alt="" class="bg-img" *ngIf="currentUser.bgUrl">
