@@ -26,6 +26,7 @@ import { LinksComponent } from './components/links/links.component';
 import { MylinksComponent } from './components/mylinks/mylinks.component';
 import { CountriesCodesPipe } from './Modules/pipes/countries-codes.pipe';
 import { MylinksModule } from './components/mylinks/mylinks.module';
+import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { MylinksModule } from './components/mylinks/mylinks.module';
     LinksComponent,
     MylinksComponent,
     CountriesCodesPipe,
+    ForgetPasswordComponent,
   ],
   imports: [
     BrowserModule,

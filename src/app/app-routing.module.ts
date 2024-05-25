@@ -6,12 +6,14 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { LinksComponent } from './components/links/links.component';
 import { MylinksComponent } from './components/mylinks/mylinks.component';
 import { profileGuard } from './Modules/gards/profile.guard';
+import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 
 const routes: Routes = [
   {path:"", redirectTo:"home", pathMatch:"full"},
   {path:"home",component:HomeComponent},
   {path:"login",component:LoginComponent},
   {path:"sign-up",component:SignUpComponent},
+  {path:"forget-pass",component:ForgetPasswordComponent},
   {path:"mylinks",loadChildren:()=> import("./components/mylinks/mylinks.module").then(m=> m.MylinksModule)},
   {path:":userName",component:LinksComponent},
   {path:"adm",loadChildren: ()=> import("./admin/admin.module").then(m => m.AdminModule)}

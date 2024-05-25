@@ -14,10 +14,12 @@
                     <button type="submit" class="btn btn-secondary text-capitalize mt-2">login</button>
                 </div>
             </form>
-            <a routerLink="/sign-up" class="text-capitalize">create account</a>
+            <div class="d-flex justify-content-between mb-3 mt-3">
+                <a routerLink="/sign-up" class="text-capitalize">create account</a>
+                <a routerLink="/forget-pass" class="text-capitalize">forget-pass</a>
+            </div>
         </div>
     </div>
 </div>
-
 
 <app-loader *ngIf="load"></app-loader>
