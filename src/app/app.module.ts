@@ -27,6 +27,9 @@ import { MylinksComponent } from './components/mylinks/mylinks.component';
 import { CountriesCodesPipe } from './Modules/pipes/countries-codes.pipe';
 import { MylinksModule } from './components/mylinks/mylinks.module';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
+import { FileUploadModule } from 'primeng/fileupload';
+import { MessageService } from 'primeng/api';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
 @NgModule({
@@ -58,6 +61,7 @@ import { ForgetPasswordComponent } from './components/forget-password/forget-pas
     BrowserAnimationsModule,    // required animations module
     ToastrModule.forRoot(),    // ToastrModule added
     MylinksModule,
+    CarouselModule 
   ],
   exports:[
     LoaderComponent
@@ -68,7 +72,7 @@ import { ForgetPasswordComponent } from './components/forget-password/forget-pas
   providers: [
      // write this special code for upload img 
      { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
-    { provide: LocationStrategy, useClass: HashLocationStrategy }
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
   ],
   bootstrap: [AppComponent]
 })

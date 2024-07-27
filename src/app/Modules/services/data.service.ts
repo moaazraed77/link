@@ -10,38 +10,58 @@ import { analytics } from '../interfaces/analytics.interface';
 })
 export class DataService {
 
+  apiLink =environment.firebase.databaseURL;
   constructor(private http: HttpClient) { }
 
   // get user data 
   getUserData(): Observable<user[]> {
-    return this.http.get<user[]>(`${environment.firebase.databaseURL}/user.json`)
+    return this.http.get<user[]>(`${this.apiLink}/user.json`)
   }
   // create user data 
   userCreateData(data: any) {
-    return this.http.post(`${environment.firebase.databaseURL}/user.json`, data)
+    return this.http.post(`${this.apiLink}/user.json`, data)
   }
   // update user data 
   updateUser(data: any, key: string) {
     if (key && key != " ")
-      return this.http.put(`${environment.firebase.databaseURL}/user/${key}.json`, data);
+      return this.http.put(`${this.apiLink}/user/${key}.json`, data);
     else
       return null
   }
 
   // create analytics 
   getUserAnalytics(): Observable<analytics[]> {
-    return this.http.get<analytics[]>(`${environment.firebase.databaseURL}/Analytics.json`)
+    return this.http.get<analytics[]>(`${this.apiLink}/Analytics.json`)
   }
   // create analytics 
   createUserAnalytics(data: any) {
-    return this.http.post(`${environment.firebase.databaseURL}/Analytics.json`, data).subscribe();
+    return this.http.post(`${this.apiLink}/Analytics.json`, data).subscribe();
   }
   // update analytics 
   updateUserAnalytics(data: any, key: string) {
     if (key && key != " ")
-      return this.http.put(`${environment.firebase.databaseURL}/Analytics/${key}.json`, data).subscribe();
+      return this.http.put(`${this.apiLink}/Analytics/${key}.json`, data).subscribe();
     else
       return null
   }
+  
+  // **************************************************************************************************
+
+  getPartiners(){
+    return this.http.get(`${this.apiLink}/partiners.json`)
+  }
+
+  createPartiner(data:any){
+    return this.http.post(`${this.apiLink}/partiners.json`,data)
+  }
+
+  updatePartiner(data:any,key:string){
+    return this.http.put(`${this.apiLink}/partiners/${key}.json`,data)
+  }
+
+  deletePartiner(key:string){
+    return this.http.delete(`${this.apiLink}/partiners/${key}.json`)
+  }
+
 
 }

@@ -22,8 +22,8 @@
       <img src="assets/5.png" alt="" class="w-100" data-aos="zoom-in-up" data-aos-duration="1000">
     </div>
   </div>
-
-  <div class="text-center">
+  
+  <!-- <div class="text-center">
     <h1>FQAs</h1>
     <div class="scroll-div-container desktop">
       <div class="text-center carasouel">
@@ -31,8 +31,6 @@
         <button class="btn-rtl" id="movingRTL" (click)="addActiveFromRTL()"><i class="bi bi-caret-right"></i></button>
         <button class="btn-ltr" id="movingLTR" (click)="addActiveFromLTR()"><i class="bi bi-caret-left"></i></button>
         <div class="carasouel-container">
-          <!-- this image for carasouel image movement -->
-          <!-- <img src="assets/1.jpg" class="d-block w-100" alt="..."> -->
           <div class="cards">
             <div class="box">
               <div class="front">
@@ -53,8 +51,6 @@
           </div>
         </div>
         <div class="carasouel-container">
-          <!-- this image for carasouel image movement -->
-          <!-- <img src="assets/1.jpg" class="d-block w-100" alt="..."> -->
           <div class="cards">
             <div class="box">
               <div class="front">
@@ -75,8 +71,6 @@
           </div>
         </div>
         <div class="carasouel-container">
-          <!-- this image for carasouel image movement -->
-          <!-- <img src="assets/1.jpg" class="d-block w-100" alt="..."> -->
           <div class="cards">
             <div class="box">
               <div class="front">
@@ -97,8 +91,6 @@
           </div>
         </div>
         <div class="carasouel-container">
-          <!-- this image for carasouel image movement -->
-          <!-- <img src="assets/1.jpg" class="d-block w-100" alt="..."> -->
           <div class="cards">
             <div class="box">
               <div class="front">
@@ -127,8 +119,6 @@
         <button class="btn-rtl" id="movingRTL" (click)="addActiveFromRTL()"><i class="bi bi-caret-right"></i></button>
         <button class="btn-ltr" id="movingLTR" (click)="addActiveFromLTR()"><i class="bi bi-caret-left"></i></button>
         <div class="carasouel-container">
-          <!-- this image for carasouel image movement -->
-          <!-- <img src="assets/1.jpg" class="d-block w-100" alt="..."> -->
           <div class="cards">
             <div class="box">
               <div class="front">
@@ -141,8 +131,6 @@
           </div>
         </div>
         <div class="carasouel-container">
-          <!-- this image for carasouel image movement -->
-          <!-- <img src="assets/1.jpg" class="d-block w-100" alt="..."> -->
           <div class="cards">
             <div class="box">
               <div class="front">
@@ -155,8 +143,6 @@
           </div>
         </div>
         <div class="carasouel-container">
-          <!-- this image for carasouel image movement -->
-          <!-- <img src="assets/1.jpg" class="d-block w-100" alt="..."> -->
           <div class="cards">
             <div class="box">
               <div class="front">
@@ -169,8 +155,6 @@
           </div>
         </div>
         <div class="carasouel-container">
-          <!-- this image for carasouel image movement -->
-          <!-- <img src="assets/1.jpg" class="d-block w-100" alt="..."> -->
           <div class="cards">
             <div class="box">
               <div class="front">
@@ -183,8 +167,6 @@
           </div>
         </div>
         <div class="carasouel-container">
-          <!-- this image for carasouel image movement -->
-          <!-- <img src="assets/1.jpg" class="d-block w-100" alt="..."> -->
           <div class="cards">
             <div class="box">
               <div class="front">
@@ -197,8 +179,6 @@
           </div>
         </div>
         <div class="carasouel-container">
-          <!-- this image for carasouel image movement -->
-          <!-- <img src="assets/1.jpg" class="d-block w-100" alt="..."> -->
           <div class="cards">
             <div class="box">
               <div class="front">
@@ -211,8 +191,6 @@
           </div>
         </div>
         <div class="carasouel-container">
-          <!-- this image for carasouel image movement -->
-          <!-- <img src="assets/1.jpg" class="d-block w-100" alt="..."> -->
           <div class="cards">
             <div class="box">
               <div class="front">
@@ -227,7 +205,7 @@
       </div>
     </div>
 
-  </div>
+  </div> -->
 
   <div class="text-center pt-5 pb-5">
     <h3> الحل الامثل لنشاطك التجاري </h3>
@@ -287,6 +265,19 @@
     </div>
   </div>
 
+  
+  <div class="text-center container">
+    <h3> شركاء النجاح </h3>
+    <owl-carousel-o [options]="customOptions">
+      <ng-container *ngFor="let item of partiners">
+        <ng-template carouselSlide>
+          <div><img [src]="item.image" alt="" style="border: 1px solid lightblue; width: 100%; height: 350px;"></div>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+
+
   <div class="container pt-5 d-flex justify-content-between align-items-center flex-wrap">
     <div class="col-sm-6" data-aos="fade-up" data-aos-duration="1500">
       <img src="assets/3.jpg" alt="" class="social-image">
@@ -298,7 +289,8 @@
 
   <div class="container pt-5 d-flex justify-content-between align-items-center flex-wrap">
     <div class="col-sm-5" data-aos="fade-up" data-aos-duration="1800">
-      <h3 class="p-3 text-center text-secondary">حل قوي لتسهيل الوصول الي حساباتك الشخصية والتجارية في لينك واحد ويجعل التواصل مع العملاء اسرع</h3>
+      <h3 class="p-3 text-center text-secondary">حل قوي لتسهيل الوصول الي حساباتك الشخصية والتجارية في لينك واحد ويجعل
+        التواصل مع العملاء اسرع</h3>
     </div>
     <div class="col-sm-6" data-aos="fade-up" data-aos-duration="1500">
       <img src="assets/4.jpeg" alt="" class="social-image">
@@ -314,6 +306,6 @@
     </div>
   </div>
 
-  
+
 
 </div>
