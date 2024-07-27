@@ -1,4 +1,5 @@
 export interface partinerType{
     id:number,
-    image:string
+    text:string,
+    image:string,
 }

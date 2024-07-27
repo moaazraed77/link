@@ -1,17 +1,22 @@
 <div class="container-fluid">
-    <button class="btn btn-primary m-2" [disabled]="partView=='add'" (click)="partView='add'">Add</button>
-    <button class="btn btn-primary m-2" [disabled]="partView=='show'" (click)="partView='show';getData()">show partiners</button>
+    <button class="btn btn-primary m-2" [disabled]="partView=='add'" (click)="partView='add';partiner.reset();photourl=''">Add</button>
+    <button class="btn btn-primary m-2" [disabled]="partView=='show'" (click)="partView='show';getData()">show
+        partiners</button>
 </div>
 <div class="col-12 p-3" *ngIf="partView=='add' || partView=='edit'">
-    <div class="card flex justify-content-center">
-        <input type="file" class="form-control" accept="image/*" (change)="onUpload($event);">
-    </div>
-    <div class="loader" *ngIf="uploadingMsg"></div>
-    <img src="{{photourl}}" *ngIf="photourl" alt="" width="150" height="130">
-    <img src="{{editObject.image!}}" *ngIf="editObject.image && !photourl" alt="" width="150" height="130">
-    <div class="text-center m-3">
-        <button class="btn btn-primary" (click)="submit();" *ngIf="photourl">upload</button>
-    </div>
+    <form [formGroup]="partiner" (ngSubmit)="submit()">
+        <div class="card flex justify-content-center">
+            <input type="file" class="form-control" accept="image/*" (change)="onUpload($event);">
+        </div>
+        <input type="text" class="form-control mt-3" formControlName="text">
+        <!-- loading -->
+        <div class="loader" *ngIf="uploadingMsg"></div> 
+        <!-- view Image -->
+        <img src="{{photourl}}" *ngIf="photourl" alt="" width="150" height="130">
+        <div class="text-center m-3">
+            <button class="btn btn-primary" type="submit" *ngIf="photourl">upload</button>
+        </div>
+    </form>
 </div>
 
 
@@ -25,12 +30,13 @@
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-partinerType>
-            <tr >
+            <tr>
                 <!-- <td>{{ i + 1 }}</td> -->
                 <td><img src="{{ partinerType.image }}" alt="" width="80" height="65"></td>
                 <td>
-                <button class="btn btn-warning m-2" (click)="editObject=partinerType; partView='edit'; photourl=''">edit</button>
-                <button class="btn btn-danger m-2" (click)="partView='delete';deleteItem(partinerType)">delete</button>
+                    <button class="btn btn-warning m-2" (click)="edit(partinerType)">edit</button>
+                    <button class="btn btn-danger m-2"
+                        (click)="partView='delete';deleteItem(partinerType)">delete</button>
                 </td>
             </tr>
         </ng-template>

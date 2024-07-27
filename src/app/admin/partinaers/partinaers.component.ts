@@ -1,4 +1,4 @@
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { DataService } from 'src/app/Modules/services/data.service';
@@ -34,7 +34,8 @@ export class PartinaersComponent {
     private toastr: ToastrService, private dataServ: DataService, private messageService: MessageService) {
     this.partiner = FormBuilder.group({
       id: [new Date().getTime()],
-      image: [""]
+      text: [""],
+      image: [""],
     })
     this.getData()
   }
@@ -65,7 +66,18 @@ export class PartinaersComponent {
     this.uploadingMsg = false;
   }
 
-  submit() { 
+  edit(item: partinerType) {
+    this.editObject = item;
+    this.partView = 'edit';
+    this.photourl = item.image;
+    this.partiner.patchValue({
+      id: item.id,
+      image: item.image,
+      text: item.text,
+    })
+  }
+
+  submit() {
     if (this.partView == "add") {
       this.dataServ.createPartiner(this.partiner.value).subscribe(() => {
         this.toastr.success("تمت اصافة شركاء نجاح");
@@ -73,15 +85,13 @@ export class PartinaersComponent {
       })
     } else {
       this.dataServ.getPartiners().subscribe((data: any) => {
-        console.log(this.editObject);
-    console.log(this.partView);
         for (const key in data) {
-          if (data[key].id == this.editObject.id){
-            this.partiner.patchValue({id:this.editObject.id})
+          if (data[key].id == this.editObject.id) {
             this.dataServ.updatePartiner(this.partiner.value, key).subscribe(() => {
               this.toastr.success("تمت تعديل شركاء نجاح")
               this.getData()
-            })}
+            })
+          }
         }
       })
     }

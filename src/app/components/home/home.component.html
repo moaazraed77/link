@@ -271,7 +271,10 @@
     <owl-carousel-o [options]="customOptions">
       <ng-container *ngFor="let item of partiners">
         <ng-template carouselSlide>
-          <div><img [src]="item.image" alt="" style="border: 1px solid lightblue; width: 100%; height: 350px;"></div>
+          <div class="d-flex flex-wrap">
+            <img [src]="item.image" alt="" style="border: 1px solid lightblue; width: 100%; height: 275px;">
+            <h5>{{item.text}}</h5>
+          </div>
         </ng-template>
       </ng-container>
     </owl-carousel-o>
