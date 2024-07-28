@@ -13,7 +13,7 @@ export class LoginComponent {
 
   constructor(private formBuilder: FormBuilder, private authServ: AuthService
     , private toastr: ToastrService, private route: Router) {
-    if (localStorage.getItem("loginObject")) {
+    if (sessionStorage.getItem("loginObject")) {
       this.route.navigate(["/mylinks"])
     }
   }
@@ -35,7 +35,7 @@ export class LoginComponent {
         this.loginObject.authTime = token.authTime;
       });
       this.loginObject.uid = user.user.uid;
-      localStorage.setItem("loginObject", JSON.stringify(this.loginObject))
+      sessionStorage.setItem("loginObject", JSON.stringify(this.loginObject))
       this.toastr.success("تم تسجيل الدخول بنجاح")
       this.route.navigate(["/mylinks"])
     }).catch(err => {

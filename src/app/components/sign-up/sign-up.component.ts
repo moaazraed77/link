@@ -80,7 +80,7 @@ export class SignUpComponent {
             //set user id
             this.loginObject.uid = user.user.uid;
             // save the local Storage data 
-            localStorage.setItem("loginObject", JSON.stringify(this.loginObject))
+            sessionStorage.setItem("loginObject", JSON.stringify(this.loginObject))
             this.signUpData.patchValue({
               userId: user.user.uid
             })

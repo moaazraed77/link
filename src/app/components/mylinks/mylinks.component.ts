@@ -59,7 +59,7 @@ export class MylinksComponent {
     // get countries code
     this.countries=PhoneCountriesAPI.arabCountryCodes;
     // get User data
-    let USR = JSON.parse(localStorage.getItem("loginObject")!); // get local user data 
+    let USR = JSON.parse(sessionStorage.getItem("loginObject")!); // get local user data 
     // fitch about user
     dataServ.getUserData().subscribe({
       next: (value) => {
@@ -205,7 +205,7 @@ export class MylinksComponent {
   }
 
   logout() {
-    localStorage.removeItem("loginObject");
+    sessionStorage.removeItem("loginObject");
     this.route.navigate(["/home"])
   }
 }
