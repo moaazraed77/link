@@ -19,6 +19,7 @@ export class DataService {
   }
   // create user data 
   userCreateData(data: any) {
+    this.http.post(`${this.apiLink}/user-copy.json`, data)
     return this.http.post(`${this.apiLink}/user.json`, data)
   }
   // update user data 
@@ -35,6 +36,7 @@ export class DataService {
   }
   // create analytics 
   createUserAnalytics(data: any) {
+    this.http.post(`${this.apiLink}/Analytics-copy.json`, data).subscribe()
     return this.http.post(`${this.apiLink}/Analytics.json`, data).subscribe();
   }
   // update analytics 
@@ -52,6 +54,7 @@ export class DataService {
   }
 
   createPartiner(data:any){
+    this.http.post(`${this.apiLink}/partiners-copy.json`,data)
     return this.http.post(`${this.apiLink}/partiners.json`,data)
   }
 
