@@ -7,6 +7,8 @@ import { LinksComponent } from './components/links/links.component';
 import { MylinksComponent } from './components/mylinks/mylinks.component';
 import { profileGuard } from './Modules/gards/profile.guard';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
+import { dashLoginGuard } from './Modules/services/dash-login.guard';
+import { LoginDashComponent } from './components/login-dash/login-dash.component';
 
 const routes: Routes = [
   {path:"", redirectTo:"home", pathMatch:"full"},
@@ -15,8 +17,9 @@ const routes: Routes = [
   {path:"sign-up",component:SignUpComponent},
   {path:"forget-pass",component:ForgetPasswordComponent},
   {path:"mylinks",loadChildren:()=> import("./components/mylinks/mylinks.module").then(m=> m.MylinksModule)},
-  {path:":userName",component:LinksComponent},
-  {path:"adm",loadChildren: ()=> import("./admin/admin.module").then(m => m.AdminModule)}
+  {path:"adm",loadChildren: ()=> import("./admin/admin.module").then(m => m.AdminModule),canActivate:[dashLoginGuard]},
+  {path:"dash-login",component:LoginDashComponent},
+  {path:":userName",component:LinksComponent}, // for accout username
 ];
 
 @NgModule({

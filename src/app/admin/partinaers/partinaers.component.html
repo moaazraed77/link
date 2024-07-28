@@ -8,7 +8,7 @@
         <div class="card flex justify-content-center">
             <input type="file" class="form-control" accept="image/*" (change)="onUpload($event);">
         </div>
-        <input type="text" class="form-control mt-3" formControlName="text">
+        <input type="text" class="form-control mt-3" formControlName="text" placeholder="Company Name">
         <!-- loading -->
         <div class="loader" *ngIf="uploadingMsg"></div> 
         <!-- view Image -->

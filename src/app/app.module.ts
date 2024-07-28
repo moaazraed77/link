@@ -30,6 +30,7 @@ import { ForgetPasswordComponent } from './components/forget-password/forget-pas
 import { FileUploadModule } from 'primeng/fileupload';
 import { MessageService } from 'primeng/api';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { LoginDashComponent } from './components/login-dash/login-dash.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     MylinksComponent,
     CountriesCodesPipe,
     ForgetPasswordComponent,
+    LoginDashComponent,
   ],
   imports: [
     BrowserModule,

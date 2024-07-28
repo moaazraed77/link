@@ -11,11 +11,14 @@ import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { TableModule } from 'primeng/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ChartViewComponent } from './chart-view/chart-view.component';
 
 @NgModule({
   declarations: [
     // AsdComponent,
     PartinaersComponent,
+    ChartViewComponent,
+    ChartViewComponent
   ],
   imports: [
     CommonModule,

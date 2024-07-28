@@ -17,5 +17,9 @@ export class AuthService {
     return createUserWithEmailAndPassword(this.auth,data.email, data.password)
   }
 
+  loginDash(data:any){
+    return signInWithEmailAndPassword(this.auth,data.email,data.pass)
+  }
+
 
 }
