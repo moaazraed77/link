@@ -20,7 +20,7 @@
             <a [href]="currentUser.facebook" target="_blank" class="alert bg-primary" *ngIf="currentUser.facebook" (click)="update('facebook')"><i class="bi bi-facebook"></i> facebook</a>
             <a [href]="currentUser.X" target="_blank" class="alert bg-dark" *ngIf="currentUser.X" (click)="update('x')"><i class="bi bi-twitter-x"></i> X</a>
             <a [href]="currentUser.LinkedIn" target="_blank" class="alert bg-info" *ngIf="currentUser.LinkedIn" (click)="update('LinkedIn')"><i class="bi bi-linkedin"></i> Linked in</a>
-            <a class="alert bg-phone" *ngIf="currentUser.LinkedIn" (click)="update('phone')"><i class="bi bi-telephone-outbound"></i> phone</a>
+            <a class="alert bg-phone" *ngIf="currentUser.phone" (click)="update('phone')"><i class="bi bi-telephone-outbound"></i> phone</a>
         </div>
         <img src="assets/logo.jpg" alt="" class="bg-view">
     </div>
