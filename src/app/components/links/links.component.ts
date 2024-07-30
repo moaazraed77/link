@@ -28,6 +28,8 @@ export class LinksComponent {
     x: [0],
     snapchat: [0],
     tiktok: [0],
+    linkedIn: [0],
+    phone: [0],
   })
 
   constructor(private dataServ: DataService, private activatedRoute: ActivatedRoute,
@@ -67,6 +69,8 @@ export class LinksComponent {
               instagram: this.userAnalytics.instagram,
               x: this.userAnalytics.x,
               whatsapp: this.userAnalytics.whatsapp,
+              linkedIn: this.userAnalytics.linkedIn,
+              phone: this.userAnalytics.phone,
             })
             dataServ.updateUserAnalytics(this.analytics.value, this.userAnalyticsKey)
           }
@@ -101,6 +105,17 @@ export class LinksComponent {
       this.analytics.patchValue({
         x: this.userAnalytics.x + 1,
       })
+    }
+    else if (platform == "linkedIn") {
+      this.analytics.patchValue({
+        linkedIn: this.userAnalytics.linkedIn + 1,
+      })
+    }
+    else if (platform == "phone") {
+      this.analytics.patchValue({
+        phone: this.userAnalytics.phone + 1,
+      })
+      window.location.href = `tel:${this.currentUser.countryCallCode}${this.currentUser.phone}`;
     }
     this.dataServ.updateUserAnalytics(this.analytics.value, this.userAnalyticsKey)
   }

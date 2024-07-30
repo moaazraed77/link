@@ -45,6 +45,9 @@ export class MylinksComponent {
     instagram: [""],
     countryCode:[""],
     whatsapp: [""],
+    countryCallCode:[""],
+    phone: [""],
+    LinkedIn: [""],
     tiktok: [""],
     photoUrl: [""],
     bgUrl: [""],
@@ -95,6 +98,9 @@ export class MylinksComponent {
           instagram: this.currentUser.instagram,
           countryCode: this.currentUser.countryCode,
           whatsapp: this.currentUser.whatsapp,
+          countryCallCode: this.currentUser.countryCallCode,
+          phone: this.currentUser.phone,
+          LinkedIn: this.currentUser.LinkedIn,
           tiktok: this.currentUser.tiktok,
           photoUrl: this.currentUser.photoUrl,
           bgUrl: this.currentUser.bgUrl,
@@ -150,6 +156,17 @@ export class MylinksComponent {
         X: ""
       })
       this.currentUser.X = ""
+    } else if (item == "LinkedIn") {
+      this.profile.patchValue({
+        LinkedIn: ""
+      })
+      this.currentUser.LinkedIn = ""
+    }
+    else if (item == "phone") {
+      this.profile.patchValue({
+        phone: ""
+      })
+      this.currentUser.phone = ""
     }
     this.submit();
   }

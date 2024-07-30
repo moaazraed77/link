@@ -9,6 +9,9 @@ $bg-color-warnings:#F1DF26;
 *{
     box-sizing: border-box;
 }
+button,a,img{
+    cursor: pointer;
+}
 
 [class*="col-"]{
     float: left;

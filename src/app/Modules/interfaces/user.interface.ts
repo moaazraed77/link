@@ -10,7 +10,10 @@ export interface user{
     instagram:string,
     countryCode:string,
     whatsapp:string,
+    countryCallCode:string,
+    phone:string
     tiktok:string,
+    LinkedIn:string;
     location: string,
     photoUrl:string,
     bgUrl:string,

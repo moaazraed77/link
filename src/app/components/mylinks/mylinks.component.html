@@ -124,6 +124,38 @@
                             </form>
                         </div>
                     </div>
+                    <div class="card card-body bg-info">
+                        <div class="icon-button">
+                            <h5 class="position-relative" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLinkedIn" aria-expanded="false" aria-controls="collapseLinkedIn"><i
+                                    class="bi bi-linkedin"></i> LinkedIn</h5>
+                            <form class="card collapse" (ngSubmit)="submit()" [formGroup]="profile" id="collapseLinkedIn">
+                                <button type="button" class="btn-close" aria-label="Close" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLinkedIn" aria-expanded="false" aria-controls="collapseLinkedIn"></button>
+                                <h6 class="text-info text-capitalize">Add your link</h6>
+                                <input type="url" class="form-control LinkedIn-input" placeholder="LinkedIn-url" formControlName="LinkedIn">
+                                <div class="text-center">
+                                    <button class="btn btn-info" [disabled]="linkSubmitClick">save</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card card-body bg-success bg-phone">
+                        <div class="icon-button">
+                            <h5 class="position-relative" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePhone" aria-expanded="false" aria-controls="collapsePhone"><i class="bi bi-telephone-outbound"></i> Phone</h5>
+                            <form class="card collapse" (ngSubmit)="submit()" [formGroup]="profile" id="collapsePhone">
+                                <button type="button" class="btn-close" aria-label="Close" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePhone" aria-expanded="false" aria-controls="collapsePhone"></button>
+                                <h6 class="text-dark text-capitalize">Add your phone </h6>
+                                <div class="form-group whatsapp-group">
+                                    <select class="form-select countryCode" name="countryCallCode" id="countryCallCode" formControlName="countryCallCode">
+                                        <option [value]="country.code" *ngFor="let country of countries; let i = index"> {{country.code}}</option>
+                                    </select>
+                                    <input type="text" class="form-control whatsapp-input" placeholder="phone-number" formControlName="phone">
+                                </div>
+                                <div class="text-center">
+                                    <button class="btn btn-dark" [disabled]="linkSubmitClick">save</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- links choosed view -->
@@ -166,6 +198,18 @@
                     <i class="bi bi-twitter-x"></i>X
                     <span>
                         <i class="bi bi-trash-fill m-1" (click)="deleteLink('x')"></i>
+                    </span>
+                </div>
+                <div class="link-data bg-info text-light" *ngIf="currentUser.LinkedIn">
+                    <i class="bi bi-linkedin"></i>Linked in
+                    <span>
+                        <i class="bi bi-trash-fill m-1" (click)="deleteLink('LinkedIn')"></i>
+                    </span>
+                </div>
+                <div class="link-data bg-success bg-phone text-light" *ngIf="currentUser.phone">
+                    <i class="bi bi-telephone-outbound"></i>Phone number
+                    <span>
+                        <i class="bi bi-trash-fill m-1" (click)="deleteLink('phone')"></i>
                     </span>
                 </div>
             </div>
@@ -213,6 +257,7 @@
                     <h5 class="text-capitalize text-info">tiktok views : <span class="text-danger m-2">{{userAnalytics.tiktok}}</span></h5>
                     <h5 class="text-capitalize text-info">x  views: <span class="text-danger m-2">{{userAnalytics.x}}</span></h5>
                     <h5 class="text-capitalize text-info">facebook  views: <span class="text-danger m-2">{{userAnalytics.facebook}}</span></h5>
+                    <h5 class="text-capitalize text-info">linkedIn  views: <span class="text-danger m-2">{{userAnalytics.linkedIn}}</span></h5>
                 </div>
             </div>
         </div>
@@ -235,6 +280,8 @@
                 <div class="alert bg-dark" *ngIf="currentUser.tiktok"><i class="bi bi-tiktok"></i> tiktok</div>
                 <div class="alert bg-primary" *ngIf="currentUser.facebook"><i class="bi bi-facebook"></i> facebook</div>
                 <div class="alert bg-dark" *ngIf="currentUser.X"><i class="bi bi-twitter-x"></i> X</div>
+                <div class="alert bg-info" *ngIf="currentUser.LinkedIn"><i class="bi bi-linkedin"></i> linked in</div>
+                <div class="alert bg-success bg-phone" *ngIf="currentUser.phone"><i class="bi bi-telephone-outbound"></i> Phone</div>
             </div>
         </div>
     </div>

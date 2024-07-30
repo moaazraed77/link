@@ -8,4 +8,6 @@ export interface analytics{
     x: number,
     snapchat: number,
     tiktok: number,
+    linkedIn: number,
+    phone: number,
 }

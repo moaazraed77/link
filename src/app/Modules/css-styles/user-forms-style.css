@@ -213,6 +213,10 @@ input.snapchat-input::placeholder {
     margin-left: 10px !important;
 }
 
+.bg-phone{
+    background-color: #81d500 !important;
+}
+
 .instagram-input {
     box-shadow: inset -3px -3px 7px #ffdfe8, inset 3px 3px 7px #ffdfe8;
 }
